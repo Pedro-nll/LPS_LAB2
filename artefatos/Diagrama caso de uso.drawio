@@ -1,0 +1,89 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0" version="24.7.14">
+  <diagram name="Page-1" id="FFaCH1uFGgwwB3ZbWIV7">
+    <mxGraphModel dx="1354" dy="550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="oIWKrFpAezbyWFSI6Mye-2" target="oIWKrFpAezbyWFSI6Mye-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-2" value="Cliente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+          <mxGeometry x="260" y="195" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-3" value="Gerenciar pedidos de aluguel" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="380" y="190" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" target="oIWKrFpAezbyWFSI6Mye-9" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="370" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="oIWKrFpAezbyWFSI6Mye-31" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="370" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-9" value="Avaliar pedido" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="370" y="380" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="oIWKrFpAezbyWFSI6Mye-10" target="oIWKrFpAezbyWFSI6Mye-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-10" value="Banco" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+          <mxGeometry x="170" y="500" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-11" value="Empresa" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+          <mxGeometry x="230" y="330" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-12" value="Avaliar situação de crédito" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="370" y="550" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-19" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="oIWKrFpAezbyWFSI6Mye-11" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="140" y="560" as="sourcePoint" />
+            <mxPoint x="250" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-20" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="oIWKrFpAezbyWFSI6Mye-10" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="215" y="570" as="sourcePoint" />
+            <mxPoint x="250" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="oIWKrFpAezbyWFSI6Mye-21" target="oIWKrFpAezbyWFSI6Mye-24" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="oIWKrFpAezbyWFSI6Mye-21" target="oIWKrFpAezbyWFSI6Mye-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-21" value="Usuário" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+          <mxGeometry x="230" y="30" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-22" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="oIWKrFpAezbyWFSI6Mye-2" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="255" y="490" as="sourcePoint" />
+            <mxPoint x="250" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-24" value="Cadastro no sistema" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="10" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-25" value="Login e autenticação" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="80" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-28" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;" parent="1" source="oIWKrFpAezbyWFSI6Mye-9" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="490" y="414.5" as="sourcePoint" />
+            <mxPoint x="650" y="414.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-29" value="Executar pedido de aluguel" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="650" y="380" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="oIWKrFpAezbyWFSI6Mye-31" value="Gerenciar automoveis" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="370" y="450" width="140" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

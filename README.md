@@ -8,6 +8,8 @@
 
 ## Diagrama de Componentes
 ![Componentes](artefatos/diagrama-de-componentes.svg)
+## Diagrama de Implementação
+![Componentes](artefatos/diagrama-de-implementacao.svg)
 
 ## Histórias de Usuário
 

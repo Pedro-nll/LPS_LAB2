@@ -6,6 +6,9 @@
 ## Diagrama de Casos de Uso
 ![Casos de uso](./artefatos/diagrama-caso-de-uso.drawio.png)
 
+## Diagrama de Componentes
+![Componentes](artefatos/diagrama-de-componentes.svg)
+
 ## Histórias de Usuário
 
 | **User Story**                        | **Descrição**                                                                                                                               |

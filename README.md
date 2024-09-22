@@ -9,6 +9,9 @@
 ## Diagrama de Componentes
 ![Componentes](artefatos/diagrama-de-componentes.svg)
 
+## Diagrama de Implementação
+![Implementação](artefatos/diagrama-de-implementacao.jpg)
+
 ## Histórias de Usuário
 
 | **User Story**                        | **Descrição**                                                                                                                               |

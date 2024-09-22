@@ -11,6 +11,9 @@
 ## Diagrama de Implementação
 ![Componentes](artefatos/diagrama-de-implementacao.svg)
 
+## Diagrama de Implementação
+![Implementação](artefatos/diagrama-de-implementacao.jpg)
+
 ## Histórias de Usuário
 
 | **User Story**                        | **Descrição**                                                                                                                               |

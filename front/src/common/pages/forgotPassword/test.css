@@ -1,0 +1,9 @@
+.ok {
+    justify-self: center;
+    align-self: center;
+
+    top: 50%;
+    position: absolute;
+
+    width: 570px;
+}

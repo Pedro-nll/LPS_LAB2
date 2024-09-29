@@ -32,7 +32,7 @@ public class AuthService implements UserDetailsService {
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuário não encontrado com o email: " + email);
         }
-
+ 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         if (usuario instanceof Cliente)

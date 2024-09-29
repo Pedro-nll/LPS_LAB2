@@ -26,6 +26,5 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
         @Override
         public void run(String... args) throws Exception {
 
-
         }
 }

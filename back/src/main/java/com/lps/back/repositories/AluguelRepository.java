@@ -4,13 +4,16 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.lps.back.models.Agencia;
 import com.lps.back.models.Aluguel;
+import com.lps.back.models.Automovel;
+import com.lps.back.models.Cliente;
 
 public interface AluguelRepository extends JpaRepository<Aluguel, Long> {
 
-    List<Aluguel> findByClienteId(Long clienteId);
+    List<Aluguel> findByCliente(Cliente cliente);
 
-    List<Aluguel> findByAutomovelMatricula(String imovelId);
+    List<Aluguel> findByAutomovel(Automovel matricula);
 
-    List<Aluguel> findByAgenciaId(Long agenciaId);
+    List<Aluguel> findByAgencia(Agencia agenciaId);
 }

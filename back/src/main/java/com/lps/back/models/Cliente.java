@@ -38,7 +38,12 @@ public class Cliente extends Usuario {
 
     @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
     private List<Emprego> empregos;
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
     @JsonIgnore
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
     private List<Aluguel> aluguels;
+
+    @JsonIgnore
+    public Double getSalario() {
+        return empregos.stream().mapToDouble(Emprego::getRendimento).sum();
+    }
 }

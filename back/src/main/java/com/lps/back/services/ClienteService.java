@@ -48,6 +48,10 @@ public class ClienteService {
         cliente.setPassword(encoder.encode(cliente.getPassword()));
         clienteRepository.save(cliente);
 
+        if (cliente.getEmpregos().size() > 3) {
+            throw new IllegalArgumentException("Cliente não pode ter mais de 3 empregos");
+        }
+
         cliente.getEmpregos().forEach(emprego -> emprego.setCliente(cliente));
         empregoService.saveAll(cliente.getEmpregos());
 

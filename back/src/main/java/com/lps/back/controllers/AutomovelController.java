@@ -2,6 +2,7 @@ package com.lps.back.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,17 +35,17 @@ public class AutomovelController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/findById")
+    @GetMapping("/findById")
     public ResponseEntity<Automovel> findById(@RequestBody String matricula) {
         return ResponseEntity.ok(automovelService.findById(matricula));
     }
 
-    @PostMapping("/all")
+    @GetMapping("/all")
     public ResponseEntity<Iterable<Automovel>> findAll() {
         return ResponseEntity.ok(automovelService.findAll());
     }
 
-    @PostMapping("/findByAgenciaId")
+    @GetMapping("/findByAgenciaId")
     public ResponseEntity<Iterable<Automovel>> findByAgenciaId(@RequestBody Long id) {
         return ResponseEntity.ok(automovelService.findByAgenciaId(id));
     }

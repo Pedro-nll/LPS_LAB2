@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lps.back.models.Aluguel;
+import com.lps.back.dtos.AluguelDTO;
+import com.lps.back.dtos.ResponseDTO;
+import com.lps.back.enumeration.Situacao;
 import com.lps.back.services.AluguelService;
 
 @RestController
@@ -47,13 +49,30 @@ public class AluguelController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody Aluguel aluguel) {
+    public ResponseEntity<?> save(@RequestBody AluguelDTO aluguel) {
         return ResponseEntity.ok(aluguelService.save(aluguel));
     }
 
     @PutMapping("/update/")
-    public ResponseEntity<?> update(@RequestBody Aluguel aluguel) {
+    public ResponseEntity<?> update(@RequestBody AluguelDTO aluguel) {
         return ResponseEntity.ok(aluguelService.update(aluguel));
+    }
+
+    @PostMapping("/acceptAluguel/{id}")
+    public ResponseEntity<?> acceptAluguel(@PathVariable Long id) {
+
+        ResponseDTO response = new ResponseDTO("Aluguel Aceito",
+                "O aluguel foi aceito com sucesso!");
+        aluguelService.changeState(id, Situacao.APROVADO);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/recAluguel/{id}")
+    public ResponseEntity<?> recAluguel(@PathVariable Long id) {
+        ResponseDTO response = new ResponseDTO("Aluguel Recusado",
+                "O aluguel foi recusado com sucesso!");
+        aluguelService.changeState(id, Situacao.RECUSADOPELAAGENCIA);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/delete/{id}")

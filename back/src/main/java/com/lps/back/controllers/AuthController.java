@@ -51,7 +51,7 @@ public class AuthController {
                             loginRequest.email(),
                             loginRequest.password()));
             Usuario user = userService.getByEmail(loginRequest.email());
-            String userType = (user instanceof Cliente) ? "Cliente" : "Funcionario";
+            String userType = (user instanceof Cliente) ? "isCliente" : "isAgencia";
             String jwt = tokenProvider.generateToken(authentication);
             return ResponseEntity.ok(new LoginResponse(jwt, userType));
         } catch (Exception e) {

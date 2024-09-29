@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.lps.back.models.Agencia;
 import com.lps.back.models.Cliente;
 import com.lps.back.models.Usuario;
 import com.lps.back.repositories.UsuarioRepository;
@@ -36,8 +37,8 @@ public class AuthService implements UserDetailsService {
 
         if (usuario instanceof Cliente)
             authorities.add(new SimpleGrantedAuthority("isCliente"));
-        else if (usuario instanceof Cliente)
-            authorities.add(new SimpleGrantedAuthority("isFuncionario"));
+        else if (usuario instanceof Agencia)
+            authorities.add(new SimpleGrantedAuthority("isAgencia"));
         return new org.springframework.security.core.userdetails.User(usuario.getEmail(), usuario.getPassword(),
                 authorities);
     }

@@ -42,9 +42,9 @@ public class SecurityConfig {
                                 "/swagger-ui/index.html",
                                 "/user/save")
                         .permitAll()
-                        .requestMatchers("/h2-console/**", "/save/**").permitAll()
-                        .requestMatchers("/user/**", "/cliente/**").permitAll()
-                        .requestMatchers("/form/**", "/answer/all/**").hasAuthority("isFuncionario"))
+                        .requestMatchers("/h2-console/**", "/save/**", "agencia/save/**").permitAll()
+                        .requestMatchers("/cliente/**").hasAuthority("isCliente")
+                        .requestMatchers("/agencia/**").hasAuthority("isAgencia"))
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults())
                 //

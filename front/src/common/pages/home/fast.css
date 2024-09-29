@@ -1,0 +1,10 @@
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+}

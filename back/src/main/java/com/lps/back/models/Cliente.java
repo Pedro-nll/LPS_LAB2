@@ -14,10 +14,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Data
 @PrimaryKeyJoinColumn(name = "id")
 @Entity
 public class Cliente extends Usuario {
@@ -29,7 +29,7 @@ public class Cliente extends Usuario {
     private String cpf;
 
     @OneToOne(targetEntity = Endereco.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "endereco_id", unique = true)
+    @JoinColumn(name = "endereco_id", unique = true)
     private Endereco endereco;
 
     @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)

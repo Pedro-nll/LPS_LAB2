@@ -11,13 +11,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LoginResponse {
     private String accessToken;
-
+    private String userType;
     @Builder.Default
     private String tokenType = "Bearer";
 
-    // Constructor with default tokenType
-    public LoginResponse(String accessToken) {
+    public LoginResponse(String accessToken, String userType) {
         this.accessToken = accessToken;
+        this.userType = userType;
         this.tokenType = "Bearer";
     }
 }

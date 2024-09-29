@@ -34,8 +34,6 @@ public class AuthService implements UserDetailsService {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        authorities.add(new SimpleGrantedAuthority("isConnect"));
-
         if (usuario instanceof Cliente)
             authorities.add(new SimpleGrantedAuthority("isCliente"));
         else if (usuario instanceof Cliente)

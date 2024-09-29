@@ -42,10 +42,9 @@ public class SecurityConfig {
                                 "/swagger-ui/index.html",
                                 "/user/save")
                         .permitAll()
-                        .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers("/user/**", "/answer/**", "form/last/**")
-                        .hasAuthority("isConnect")
-                        .requestMatchers("/form/**", "/answer/all/**").hasAuthority("banco"))
+                        .requestMatchers("/h2-console/**", "/save/**").permitAll()
+                        .requestMatchers("/user/**", "/cliente/**").permitAll()
+                        .requestMatchers("/form/**", "/answer/all/**").hasAuthority("isFuncionario"))
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults())
                 //
@@ -63,7 +62,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
             throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }

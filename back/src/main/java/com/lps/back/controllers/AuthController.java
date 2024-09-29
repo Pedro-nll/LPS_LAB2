@@ -22,6 +22,7 @@ import com.lps.back.dtos.auth.LoginRequest;
 import com.lps.back.dtos.auth.LoginResponse;
 import com.lps.back.exceptions.ChangePasswordException;
 import com.lps.back.exceptions.InvalidInformationException;
+import com.lps.back.models.Cliente;
 import com.lps.back.models.Usuario;
 import com.lps.back.security.JwtTokenProvider;
 import com.lps.back.services.EmailSenderService;
@@ -49,9 +50,10 @@ public class AuthController {
                     new UsernamePasswordAuthenticationToken(
                             loginRequest.email(),
                             loginRequest.password()));
-
+            Usuario user = userService.getByEmail(loginRequest.email());
+            String userType = (user instanceof Cliente) ? "Cliente" : "Funcionario";
             String jwt = tokenProvider.generateToken(authentication);
-            return ResponseEntity.ok(new LoginResponse(jwt));
+            return ResponseEntity.ok(new LoginResponse(jwt, userType));
         } catch (Exception e) {
             ResponseDTO responseDTO = new ResponseDTO("Dados inválidos",
                     e.getMessage());

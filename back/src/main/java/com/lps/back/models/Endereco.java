@@ -1,5 +1,8 @@
 package com.lps.back.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -42,5 +45,7 @@ public class Endereco {
 
     @OneToOne(targetEntity = Cliente.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "cliente_id", unique = true)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonIgnore
     private Cliente cliente;
 }

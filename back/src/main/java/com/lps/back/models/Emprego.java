@@ -1,5 +1,8 @@
 package com.lps.back.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,5 +36,7 @@ public class Emprego {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id", nullable = false, unique = false)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonIgnore
     private Cliente cliente;
 }

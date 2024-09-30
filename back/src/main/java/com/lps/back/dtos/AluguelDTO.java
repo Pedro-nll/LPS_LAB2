@@ -7,6 +7,7 @@ import com.lps.back.models.Automovel;
 import com.lps.back.models.Banco;
 import com.lps.back.models.Cliente;
 
+
 public record AluguelDTO(
         Long id,
         Double valorMensal,

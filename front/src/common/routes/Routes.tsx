@@ -1,4 +1,3 @@
-import React from 'react';
 import { createBrowserRouter } from "react-router-dom";
 import App from '../../App';
 import { CoursePage } from '../pages/course/CoursePage';
@@ -16,6 +15,9 @@ import { SubjectPage } from '../pages/subjects/SubjectsPage.tsx';
 import { TeacherSubjectPage } from '../pages/subjects/TeacherSubjectPage.tsx';
 import { TeacherPage } from '../pages/teacher/TeacherPage';
 import { DisciplinePage } from '../pages/disciplines/Discipline';
+import ClientRegistration from '../pages/registration/client/ClientRegistration.tsx';
+import AgenciRegistration from '../pages/registration/agenci/AgenciRegistration.tsx';
+import WitchRegistration from '../pages/registration/witch/WitchRegistration.tsx';
 
 const SystemRoutes = createBrowserRouter([
     {
@@ -65,6 +67,20 @@ const SystemRoutes = createBrowserRouter([
     {
       path: "/registration",
       element: <RegistrationPage />,
+      children: [
+        {
+          path: '',
+          element: <WitchRegistration />
+        },
+        {
+          path: 'client',
+          element: <ClientRegistration />
+        },
+        {
+          path: 'agenci',
+          element: <AgenciRegistration />
+        }
+      ]
     },
     {
       path: '/forgotpassword',

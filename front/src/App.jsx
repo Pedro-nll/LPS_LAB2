@@ -1,5 +1,4 @@
 import { Outlet } from 'react-router-dom'
-import { DashboardLayout } from './common/layouts/DashboardLayout'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -12,7 +11,7 @@ function App() {
   useEffect(() => {
     const localUser = localStorage.getItem("user");
     if (localUser === null) {
-      navigate("/login")
+      //navigate("/login")
       return;
     }
 
@@ -23,9 +22,7 @@ function App() {
 
   return (
     <div>
-      <DashboardLayout>
         <Outlet />
-      </DashboardLayout>
     </div>
   )
 }

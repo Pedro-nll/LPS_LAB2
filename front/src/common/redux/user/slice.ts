@@ -8,15 +8,19 @@ type UserSlice = {
 
 const initialState : UserSlice = {
   user: {
-    id: null,
-    email: null,
-    name: null,
-    password: null,
-    userType: null
+    id: undefined,
+    email: undefined,
+    name: undefined,
+    password: undefined,
+    rg: undefined,
+    cpf: undefined,
+    endereco: undefined,
+    
+    userType: undefined
   },
   forgotPasswordUser: {
-    email: null,
-    token: null
+    email: undefined,
+    token: undefined
   }
 }
 

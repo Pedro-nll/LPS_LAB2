@@ -1,19 +1,22 @@
 export type User = {
-    id : number | null,
-    name : string | null,
-    email : string | null,
-    password : string | null,
-    userType : string | null,
+    id?: number,
+    name?: string,
+    email?: string,
+    password?: string,
+    userType?: string,
+    rg?: string,
+    cpf?: string,
+    endereco?: Endereco,
 }
 
 export type UserLogin = {
-    email : string | null,
-    password : string | null,
+    email?: string,
+    password?: string,
 }
 
 export type UserToken = {
-    email: string | null,
-    token: string | null
+    email?: string,
+    token?: string,
 }
 
 export type Message = {
@@ -21,9 +24,18 @@ export type Message = {
     message: string
 }
 
-
 export type UserRecoverPassword = {
-    email: string,
-    password: string,
-    token: string,
+    email?: string,
+    password?: string,
+    token?: string,
 }
+
+export type Endereco = {
+    id: number;
+    logradouro: string;
+    complemento: string;
+    bairro: string;
+    cidade: string;
+    estado: string;
+    cep: string;
+};

@@ -25,22 +25,22 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, name = "logradouro", length = 100, unique = false)
+    @Column(nullable = false, name = "logradouro", unique = false)
     private String logradouro;
 
-    @Column(nullable = false, name = "complemento", length = 10, unique = false)
+    @Column(nullable = false, name = "complemento", unique = false)
     private String complemento;
 
-    @Column(nullable = false, name = "bairro", length = 10, unique = false)
+    @Column(nullable = false, name = "bairro", unique = false)
     private String bairro;
 
-    @Column(nullable = false, name = "cidade", length = 10, unique = false)
+    @Column(nullable = false, name = "cidade", unique = false)
     private String cidade;
 
-    @Column(nullable = false, name = "estado", length = 10, unique = false)
+    @Column(nullable = false, name = "estado", unique = false)
     private String estado;
 
-    @Column(nullable = false, name = "cep", length = 10, unique = false)
+    @Column(nullable = false, name = "cep", unique = false)
     private String cep;
 
     @OneToOne(targetEntity = Cliente.class, fetch = FetchType.EAGER)

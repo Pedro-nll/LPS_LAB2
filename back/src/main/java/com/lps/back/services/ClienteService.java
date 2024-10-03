@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.lps.back.exceptions.ObjectNotFoundException;
 import com.lps.back.models.Cliente;
+import com.lps.back.models.Endereco;
 import com.lps.back.repositories.ClienteRepository;
 
 import jakarta.transaction.Transactional;
@@ -56,7 +57,9 @@ public class ClienteService {
         empregoService.saveAll(cliente.getEmpregos());
 
         cliente.getEndereco().setCliente(cliente);
-        enderecoService.save(cliente.getEndereco());
+        Endereco end = enderecoService.save(cliente.getEndereco());
+        cliente.setEndereco(end);
+        
         return cliente;
     }
 

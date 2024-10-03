@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -42,66 +45,80 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
         @Autowired
         private BancoRepository bancoRepository;
 
+        @Autowired
+        private final PasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        public PasswordEncoder getBcrypt() {
+                return this.encoder;
+        }
+
         @Override
         public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "PUT", "DELETE");
         }
 
+        @Value("${spring.profiles.active}")
+        private String activeProfile;
+
         @Override
         public void run(String... args) throws Exception {
-                Agencia agencia = new Agencia();
-                agencia.setName("Agencia 1");
-                agencia.setEmail("agencia1@example.com");
-                agencia.setPassword("password123");
-                agenciaRepository.save(agencia);
+                if (activeProfile == "test") {
+                        Agencia agencia = new Agencia();
+                        agencia.setName("Agencia 1");
+                        agencia.setEmail("agencia1@example.com");
+                        agencia.setPassword(encoder.encode(("password123")));
+                        agenciaRepository.save(agencia);
 
-                // Create and save a 'Banco' entity
-                Banco banco = new Banco("Banco 1", "banco1@example.com", "password123", new ArrayList<>());
-                bancoRepository.save(banco);
+                        // Create and save a 'Banco' entity
+                        Banco banco = new Banco("Banco 1", "banco1@example.com", encoder.encode(("password123")),
+                                        new ArrayList<>());
+                        bancoRepository.save(banco);
 
-                // Create and save a 'Cliente' entity
-                Cliente cliente = new Cliente();
-                cliente.setName("Cliente 1");
-                cliente.setEmail("cliente1@example.com");
-                cliente.setPassword("password123");
-                cliente.setRg("123456789");
-                cliente.setCpf("12345678901");
-                clienteRepository.save(cliente);
+                        // Create and save a 'Cliente' entity
+                        Cliente cliente = new Cliente();
+                        cliente.setName("Cliente 1");
+                        cliente.setEmail("cliente1@example.com");
+                        cliente.setPassword(encoder.encode(("password123")));
+                        cliente.setRg("123456789");
+                        cliente.setCpf("12345678901");
+                        clienteRepository.save(cliente);
 
-                // Create and save an 'Automovel' entity
-                Automovel automovel = new Automovel();
-                automovel.setMatricula("AUTO123");
-                automovel.setAno(2020);
-                automovel.setMarca("Toyota");
-                automovel.setModelo("Corolla");
-                automovel.setPlaca("XYZ1234");
-                automovel.setAlugado(false);
-                automovel.setImageUrl("https://example.com/car.png");
-                automovel.setAgencia(agencia); // Set the associated 'Agencia'
-                automovelRepository.save(automovel);
+                        // Create and save an 'Automovel' entity
+                        Automovel automovel = new Automovel();
+                        automovel.setMatricula("AUTO123");
+                        automovel.setAno(2020);
+                        automovel.setMarca("Toyota");
+                        automovel.setModelo("Corolla");
+                        automovel.setPlaca("XYZ1234");
+                        automovel.setAlugado(false);
+                        automovel.setImageUrl("https://example.com/car.png");
+                        automovel.setAgencia(agencia); // Set the associated 'Agencia'
+                        automovelRepository.save(automovel);
 
-                // Create and save an 'Aluguel' entity
-                Aluguel aluguel = new Aluguel();
-                aluguel.setValorMensal(500.00);
-                aluguel.setValorPendente(0.00);
-                aluguel.setAtrasado(false);
-                aluguel.setAtivo(true);
-                aluguel.setTaxaJuros(0.02);
-                aluguel.setSituacao(Situacao.PENDENTE); // Assuming Situacao is an enum in your project
-                aluguel.setAutomovel(automovel); // Set the associated 'Automovel'
-                aluguel.setAgencia(agencia); // Set the associated 'Agencia'
-                aluguel.setBanco(banco); // Set the associated 'Banco'
-                aluguel.setCliente(cliente); // Set the associated 'Cliente'
-                aluguelRepository.save(aluguel);
+                        // Create and save an 'Aluguel' entity
+                        Aluguel aluguel = new Aluguel();
+                        aluguel.setValorMensal(500.00);
+                        aluguel.setValorPendente(0.00);
+                        aluguel.setAtrasado(false);
+                        aluguel.setAtivo(true);
+                        aluguel.setTaxaJuros(0.02);
+                        aluguel.setSituacao(Situacao.PENDENTE); // Assuming Situacao is an enum in your project
+                        aluguel.setAutomovel(automovel); // Set the associated 'Automovel'
+                        aluguel.setAgencia(agencia); // Set the associated 'Agencia'
+                        aluguel.setBanco(banco); // Set the associated 'Banco'
+                        aluguel.setCliente(cliente); // Set the associated 'Cliente'
+                        aluguelRepository.save(aluguel);
 
-                // Assign the 'Aluguel' to the 'Agencia' and 'Banco'
-                List<Aluguel> alugueis = new ArrayList<>();
-                alugueis.add(aluguel);
-                agencia.setAlugueis(alugueis);
-                banco.setAlugueis(alugueis);
-                agenciaRepository.save(agencia);
-                bancoRepository.save(banco);
+                        // Assign the 'Aluguel' to the 'Agencia' and 'Banco'
+                        List<Aluguel> alugueis = new ArrayList<>();
+                        alugueis.add(aluguel);
+                        agencia.setAlugueis(alugueis);
+                        banco.setAlugueis(alugueis);
+                        agenciaRepository.save(agencia);
+                        bancoRepository.save(banco);
 
-                System.out.println("Data initialized successfully!");
+                        System.out.println("Data initialized successfully!");
+
+                }
         }
 }

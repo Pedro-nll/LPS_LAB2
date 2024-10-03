@@ -44,7 +44,7 @@ public class SecurityConfig {
                         .permitAll()
                         .requestMatchers("/h2-console/**", "cliente/save/**", "agencia/save/**").permitAll()
                         .requestMatchers("/cliente/**").hasAuthority("isCliente")
-                        .requestMatchers("/agencia/**", "veiculo/**").hasAuthority("isAgencia")
+                        .requestMatchers("/agencia/**", "/veiculo/**").hasAuthority("isAgencia")
                         .requestMatchers("/aluguel/**").hasAnyAuthority("isCliente", "isAgencia"))
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults())

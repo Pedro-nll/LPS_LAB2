@@ -33,9 +33,10 @@ const HomePage = () => {
     <TabView className="custom-tabview">
       <TabPanel header="Disponiveis para Alugar" className='a'>
         <Container>
-          {loading ? <p>Carregando...</p> : data.map((automovel) => {
+          {loading ? <p>Carregando...</p> : data.map((a:Automovel) => {
+            console.log(a)
             return (
-              <AutomovelCard key={automovel.id} automovel={automovel} />)
+              <AutomovelCard automovel={a} />)
           })}
         </Container>
 

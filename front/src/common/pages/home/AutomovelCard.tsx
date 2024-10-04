@@ -1,14 +1,14 @@
 import { Button } from 'primereact/button';
-import { Automovel } from '../../helpers/types';
 import { Card, Colum, Image } from './style';
 
-const AutomovelCard: React.FC<Automovel> = (automovel) => {
+const AutomovelCard = (data) => {
+  const automovel = data.automovel
   return (
     <Card>
       <Colum>
-        <Image src={automovel.imageUrl} alt="Automóvel" />
+        {automovel.imageUrl ? <Image src={automovel.imageUrl} alt="Automóvel" /> : ""}
       </Colum>
-    
+
       <Colum>
         <p>Ano: {automovel.ano}</p>
       </Colum>

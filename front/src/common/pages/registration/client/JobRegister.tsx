@@ -24,12 +24,11 @@ const ClientRegistration: React.FC<ClientRegistrationProps> = ({ index, empregos
     const [rendimentoInput, setRendimentoInput] = useState(empregos[index]?.rendimento || '');
 
     const handleInputChange = () => {
-        const updatedEmpregos = empregos.map((emprego, i) =>
-            i === index ? { cargo: cargoInput, empresa: empresaInput, rendimento: rendimentoInput } : emprego
-        );
+        const updatedEmpregos = [...empregos];
+        updatedEmpregos[index] = { cargo: cargoInput, empresa: empresaInput, rendimento: rendimentoInput };
         setEmpregos(updatedEmpregos);
     };
-
+    
     return (
         <div>
             <Subtitle>Emprego {index}</Subtitle>

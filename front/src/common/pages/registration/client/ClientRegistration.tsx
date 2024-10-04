@@ -27,7 +27,7 @@ const ClientRegistration = () => {
     const [cidadeInput, setCidadeInput] = useState('');
     const [estadoInput, setEstadoInput] = useState('');
     const [cepInput, setCepInput] = useState('');
-    const [empregos, setEmpregos] = useState<Emprego[]>([])
+    
     const autoFill = () => {
         const cepUrl = cepInput.replace('-', '')
         axios.get(`https://opencep.com/v1/${cepUrl}`).then((response) => {
@@ -46,7 +46,14 @@ const ClientRegistration = () => {
             autoFill()
         }
     }, [cepInput])
+
     const [numberOfJobs, setNumberOfJobs] = useState(1)
+    const [empregos, setEmpregos] = useState<Emprego[]>(() => 
+        Array(numberOfJobs).fill({ cargo: '', empresa: '', rendimento: '' })
+    );
+    useEffect(() => {
+        setEmpregos(Array(numberOfJobs).fill({ cargo: '', empresa: '', rendimento: '' }));
+    }, [numberOfJobs]);
 
     const navigate = useNavigate();
 
@@ -65,6 +72,7 @@ const ClientRegistration = () => {
         }
     ]
     const registerUser = () => {
+        console.log(empregos)
         axios.post('http://localhost:8080/cliente/save', {
             name: nameIntput,
             email: emailIntput,
@@ -80,9 +88,12 @@ const ClientRegistration = () => {
                 estado: estadoInput,
                 cep: cepInput,
             },
-            empregos: empregos,
+            empregos: empregos.map(job => ({
+                cargo: job.cargo,
+                empresa: job.empresa,
+                rendimento: job.rendimento
+            })),
         }).then((response) => {
-
             console.log(response)
             navigate('/login')
         }).catch((error) => {

@@ -1,35 +1,42 @@
-import { useRef } from 'react';
-import { mockImageUrl } from '../../helpers/mocks';
+import { useEffect, useState } from 'react';
 import { Automovel } from '../../helpers/types';
-import AutomovelCard from './AutomovelCard';
 import { Container } from './style';
 
 
-import { TabView, TabPanel } from 'primereact/tabview';
-import { Button } from 'primereact/button';
-        
+import { TabPanel, TabView } from 'primereact/tabview';
+import api from '../../components/HomeAgencia/Api';
+import AutomovelCard from './AutomovelCard';
+
 
 const HomePage = () => {
 
-  const mockAutomovel: Automovel = {
-    matricula: "ABC1234",
-    ano: 2020,
-    marca: "Toyota",
-    modelo: "Corolla",
-    placa: "XYZ5678",
-    alugado: false,
-    imageUrl: mockImageUrl,
-  };
-  
+
+  const [data, setData] = useState<Automovel[]>([])
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    fetchVehicles()
+  }, [])
+
+  const fetchVehicles = () => {
+    api.get('/veiculo/all').then((response) => {
+      setData(response.data)
+      console.log(response.data)
+      setLoading(false)
+    }).catch((error) => {
+      console.error('Error fetching vehicles:', error);
+      setData([])
+      setLoading(false)
+    })
+  }
+
   return (
     <TabView className="custom-tabview">
       <TabPanel header="Disponiveis para Alugar" className='a'>
         <Container>
-          <AutomovelCard {...mockAutomovel} />
-          <AutomovelCard {...mockAutomovel} />
-          <AutomovelCard {...mockAutomovel} />
-          <AutomovelCard {...mockAutomovel} />
-          <AutomovelCard {...mockAutomovel} />
+          {loading ? <p>Carregando...</p> : data.map((automovel) => {
+            return (
+              <AutomovelCard key={automovel.id} automovel={automovel} />)
+          })}
         </Container>
 
       </TabPanel>

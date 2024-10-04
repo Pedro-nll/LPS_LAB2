@@ -1,28 +1,31 @@
 import { createRoot } from "react-dom/client";
 
-import { ThemeProvider } from "@mui/material";
 import React from "react";
 import { Provider } from "react-redux";
 import { NotificationProvider } from "./common/context/NotificationContext.tsx";
 import store from "./common/redux/store.js";
 import "./styles/global.css";
-import { Theme } from "./styles/themes/theme.tsx";
 
 import { RouterProvider } from "react-router-dom";
 import SystemRoutes from "./common/routes/Routes.tsx";
 
-import 'primereact/resources/themes/saga-blue/theme.css'
-import 'primereact/resources/primereact.min.css'
-import './style.css'
+// _app.js
+import { PrimeReactProvider } from 'primereact/api';
+
+
+        
+import 'primereact/resources/primereact.min.css';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import './style.css';
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider theme={Theme}>
       <NotificationProvider>
+      <PrimeReactProvider>
         <Provider store={store}>
           <RouterProvider router={SystemRoutes} />
         </Provider>
+        </PrimeReactProvider>
       </NotificationProvider>
-    </ThemeProvider>
   </React.StrictMode>
 );

@@ -92,7 +92,7 @@ const ClientRegistration = () => {
 
     return (
         <FlexContainer style={{ textAlign: 'center', height: "100vh" }}>
-            <Stepper ref={stepperRef} style={{ flexBasis: '50rem', }}>
+            <Stepper ref={stepperRef} style={{ flexBasis: '50rem' }}>
                 <StepperPanel header="Dados de Usuario">
                     <div>
                         <Space value={15} />

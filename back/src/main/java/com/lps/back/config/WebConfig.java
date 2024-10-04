@@ -62,7 +62,7 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
 
         @Override
         public void run(String... args) throws Exception {
-                if (activeProfile == "test") {
+                if (activeProfile.equals("test")) {
                         Agencia agencia = new Agencia();
                         agencia.setName("Agencia 1");
                         agencia.setEmail("agencia1@example.com");
@@ -77,7 +77,7 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
                         // Create and save a 'Cliente' entity
                         Cliente cliente = new Cliente();
                         cliente.setName("123");
-                        cliente.setEmail("123");
+                        cliente.setEmail("123@gmail.com");
                         cliente.setPassword(encoder.encode(("123")));
                         cliente.setRg("123456789");
                         cliente.setCpf("12345678901");

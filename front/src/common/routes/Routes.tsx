@@ -10,13 +10,17 @@ import { RegistrationPage } from '../pages/registration/Registration';
 import AgenciRegistration from '../pages/registration/agencia/AgenciaRegistration.tsx';
 import ClientRegistration from '../pages/registration/client/ClientRegistration.tsx';
 import WitchRegistration from '../pages/registration/witch/WitchRegistration.tsx';
+import HomePage from '../pages/home/HomePage.tsx'
 
 const SystemRoutes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-
+      {
+        path: 'home',
+        element: <HomePage />
+      }
     ],
   },
   {

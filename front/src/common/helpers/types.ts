@@ -39,3 +39,15 @@ export type Endereco = {
     estado: string;
     cep: string;
 };
+
+export type Automovel = {
+    matricula?: string;
+    ano?: number;
+    marca?: string;
+    modelo?: string;
+    placa?: string;
+    alugado?: boolean;
+    imageUrl?: string;
+    // agencia?: Agencia;
+    // aluguel?: Aluguel[];
+  };

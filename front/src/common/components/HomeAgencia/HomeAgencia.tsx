@@ -24,6 +24,7 @@ const HomeAgencia = () => {
     const HOST = "http://localhost:8080"
     const [vehicles, setVehicles] = useState([]);
     const [open, setOpen] = useState(false);
+    const [AgenciaId, setAgenciaId] = useState()
     const [currentVehicle, setCurrentVehicle] = useState({
         matricula: '',
         ano: 0,
@@ -32,29 +33,30 @@ const HomeAgencia = () => {
         placa: '',
         alugado: false,
         imageUrl: '',
-        AgenciaId: 0,
+        AgenciaId: AgenciaId,
     });
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchVehicles();
         getAgencia()
     }, []);
+    useEffect(() => {
+        fetchVehicles()
+
+    }, [AgenciaId])
 
     const getAgencia = () => {
         api.get(`${HOST}/agencia`).then((response) => {
-            console.log(response)
-            setCurrentVehicle({
-                ...currentVehicle,
-                ["AgenciaId"]: response.data.id,
-            });
+            console.log(response.data.id)
+            setAgenciaId(response.data.id)
+
         })
     }
     const fetchVehicles = async () => {
         setLoading(true);
         try {
-            const response = await api.get(`${HOST}/veiculo/all`);
+            const response = await api.get(`${HOST}/veiculo/findByAgenciaId/${AgenciaId}`);
             setVehicles(Array.isArray(response.data) ? response.data : []);
         } catch (error) {
             console.error('Error fetching vehicles:', error);
@@ -75,7 +77,7 @@ const HomeAgencia = () => {
             placa: '',
             alugado: false,
             imageUrl: '',
-            AgenciaId: 0,
+            AgenciaId: AgenciaId,
         });
     };
 

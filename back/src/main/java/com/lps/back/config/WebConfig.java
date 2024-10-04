@@ -20,11 +20,15 @@ import com.lps.back.models.Aluguel;
 import com.lps.back.models.Automovel;
 import com.lps.back.models.Banco;
 import com.lps.back.models.Cliente;
+import com.lps.back.models.Emprego;
+import com.lps.back.models.Endereco;
 import com.lps.back.repositories.AgenciaRepository;
 import com.lps.back.repositories.AluguelRepository;
 import com.lps.back.repositories.AutomovelRepository;
 import com.lps.back.repositories.BancoRepository;
 import com.lps.back.repositories.ClienteRepository;
+import com.lps.back.repositories.EnderecoRepository;
+import com.lps.back.services.ClienteService;
 
 @Configuration
 @EnableWebMvc
@@ -44,6 +48,9 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
 
         @Autowired
         private BancoRepository bancoRepository;
+
+        @Autowired
+        private ClienteService clienteService;
 
         @Autowired
         private final PasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -81,7 +88,23 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
                         cliente.setPassword(encoder.encode(("123")));
                         cliente.setRg("123456789");
                         cliente.setCpf("12345678901");
-                        clienteRepository.save(cliente);        
+
+                        Endereco end = new Endereco();
+                        end.setBairro("teste");
+                        end.setCep("teste");
+                        end.setCidade("teste");
+                        end.setComplemento("teste");
+                        end.setEstado("teste");
+                        end.setLogradouro("teste");
+
+                        cliente.setEndereco(end);
+
+
+                        Emprego emp1 = new Emprego(null, "dev", "dti", 1200.00, cliente);
+                        List<Emprego> empregos = new ArrayList<>();
+                        empregos.add(emp1);
+                        cliente.setEmpregos(empregos);
+                        clienteService.save(cliente);        
 
                         // Create and save an 'Automovel' entity
                         Automovel automovel = new Automovel();

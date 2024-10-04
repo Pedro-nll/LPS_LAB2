@@ -7,11 +7,17 @@ class UserRepository extends BaseRepository {
         super({controller: 'auth'})
     }
 
-    async login(user : UserLogin): Promise<User> {
-        console.log(this.url)
-        const response: AxiosResponse<User> = await this.post(user, "login")
-        return response.data
-    }
+    async login(user: UserLogin): Promise<User> {
+        try {
+          console.log('Attempting login with:', user);
+          const response: AxiosResponse<User> = await this.post(user, "login");
+          console.log('Login response:', response);
+          return response.data;
+        } catch (error) {
+          console.error('Login error:', error);
+          throw error;
+        }
+      }
 
     async register(user : User): Promise<User> {
         console.log(this.url)

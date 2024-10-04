@@ -59,6 +59,8 @@ public class ClienteService {
         cliente.getEndereco().setCliente(cliente);
         Endereco end = enderecoService.save(cliente.getEndereco());
         cliente.setEndereco(end);
+
+        clienteRepository.save(cliente);
         
         return cliente;
     }

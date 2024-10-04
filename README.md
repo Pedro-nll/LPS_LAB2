@@ -1,4 +1,16 @@
-# LPS_LAB2
+# LABORATÓRIO 02 - Sistema de Aluguel de Carros
+
+O Laboratório 02 envolve o desenvolvimento de um Sistema de Aluguel de Carros para apoiar a gestão de locações, permitindo que clientes realizem pedidos de aluguel e agentes financeiros avaliem e aprovem esses pedidos. O sistema automatiza o processo de cadastro, consulta e modificação de pedidos, oferecendo uma plataforma integrada que facilita a comunicação entre clientes e agentes, garantindo agilidade e segurança nas transações.
+
+## Alunos integrantes da equipe
+
+- Pedro Henrique Pires Rodrigues
+- Pedro Negri Leão Lambert
+- Vinicius Rezende Arantes de Araujo Moreira
+
+## Professores responsáveis
+
+- João Paulo Carneiro Aramuni
 
 ## Diagrama de Classes
 ![alt text](artefatos/diagrama-de-classes.svg)

@@ -65,7 +65,7 @@ const ClientRegistration = () => {
         }
     ]
     const registerUser = () => {
-        axios.post('http://localhost:3001/users', {
+        axios.post('http://localhost:8080/cliente/save', {
             name: nameIntput,
             email: emailIntput,
             password: passwordIntput,
@@ -80,12 +80,7 @@ const ClientRegistration = () => {
                 estado: estadoInput,
                 cep: cepInput,
             },
-            empregos: Array.from({ length: numberOfJobs }, (_, index) => ({
-                id: index,
-                cargo: `Cargo ${index + 1}`,
-                empresa: `Empresa ${index + 1}`,
-                rendimento: 0,
-            })),
+            empregos: empregos,
         }).then((response) => {
 
             console.log(response)
@@ -230,7 +225,7 @@ const ClientRegistration = () => {
 
                     <TwoParts>
                         {Array.from({ length: numberOfJobs }, (_, index) => (
-                            <JobRegister index={index + 1} setEmpregos={setEmpregos} empregos={empregos} />
+                            <JobRegister index={index} setEmpregos={setEmpregos} empregos={empregos} />
                         ))}
 
                     </TwoParts>

@@ -26,10 +26,10 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Cliente extends Usuario {
 
-    @Column(name = "rg", nullable = false, unique = true, columnDefinition = "VARCHAR(9)")
+    @Column(name = "rg", nullable = false, unique = true)
     private String rg;
 
-    @Column(name = "cpf", nullable = false, unique = true, columnDefinition = "VARCHAR(11)")
+    @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
 
     @OneToOne(targetEntity = Endereco.class, fetch = FetchType.EAGER)

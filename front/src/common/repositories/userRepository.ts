@@ -4,7 +4,7 @@ import BaseRepository from "./BaseRepository";
 
 class UserRepository extends BaseRepository {
     constructor() {
-        super({controller: 'user'})
+        super({controller: 'auth'})
     }
 
     async login(user : UserLogin): Promise<User> {

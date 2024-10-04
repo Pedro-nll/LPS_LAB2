@@ -1,6 +1,5 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
-import MenuIcon from '@mui/icons-material/Menu';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import {
     AppBar,
@@ -107,7 +106,7 @@ export default function PrimarySearchAppBar(props: INavBar) {
                 <Avatar sx={{ mr: 1 }}>
                 </Avatar>
                 <Box>
-                  {user.name }
+                    {user.name}
                 </Box>
             </Box>
             <MenuItem onClick={openLogoutDialog}>
@@ -153,18 +152,7 @@ export default function PrimarySearchAppBar(props: INavBar) {
         <Box>
             <AppBar position="sticky" color="secondary">
                 <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2 }}
-                        onClick={() => {
-                            props.setOpenSideBar(!props.openSideBar);
-                        }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
+
                     <Typography
                         variant="h6"
                         noWrap
@@ -173,7 +161,7 @@ export default function PrimarySearchAppBar(props: INavBar) {
                     >
                         <span className="font-base font-sans">Lab</span>
                         <span className="font-light font-sans tracking-tight">
-                            1
+                            2
                         </span>
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />

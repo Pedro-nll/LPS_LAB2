@@ -17,7 +17,7 @@ import { PrimeReactProvider } from 'primereact/api';
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import './style.css';
-
+import "./styles/global.css";
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
       <NotificationProvider>

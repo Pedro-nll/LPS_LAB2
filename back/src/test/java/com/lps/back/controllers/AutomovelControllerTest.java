@@ -90,7 +90,7 @@ public class AutomovelControllerTest {
     void testDelete() throws Exception {
         doNothing().when(automovelService).delete("ABC123");
 
-        mockMvc.perform(post("/veiculo/delete")
+        mockMvc.perform(post("/veiculo/delete?matricula=ABC123")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("\"ABC123\""))
                 .andExpect(status().isOk());
@@ -111,7 +111,7 @@ public class AutomovelControllerTest {
     void testFindById_NotFound() throws Exception {
         when(automovelService.findById("XYZ999")).thenReturn(null);
 
-        mockMvc.perform(get("/findById/XYZ999"))
+        mockMvc.perform(get("/findById?matricula=XYZ999"))
                 .andExpect(status().isNotFound());
     }
 

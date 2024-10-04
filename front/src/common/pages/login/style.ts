@@ -25,3 +25,8 @@ export const Container = styled.div`
 export const Space = styled.div<SpaceProps>`
     margin-bottom: ${(props) => props.value || '20'}px;
 `
+
+export const ErrorText = styled.p`
+  color: red;
+  margin-bottom: 10px;
+`;

@@ -224,3 +224,5 @@ export default function PrimarySearchAppBar(props: INavBar) {
         </Box>
     );
 }
+
+export { PrimarySearchAppBar };

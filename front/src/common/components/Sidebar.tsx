@@ -93,3 +93,4 @@ export function SidebarItem({ icon, text, active, alert, location }: SidebarItem
         </li>
     );
 }
+export { SidebarContext };

@@ -32,7 +32,7 @@ public class AutomovelController {
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<Void> delete(@RequestBody String matricula) {
+    public ResponseEntity<Void> delete(@RequestParam String matricula) {
         automovelService.delete(matricula);
         return ResponseEntity.ok().build();
     }

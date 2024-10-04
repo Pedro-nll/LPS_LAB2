@@ -11,6 +11,7 @@ import AgenciRegistration from '../pages/registration/agencia/AgenciaRegistratio
 import ClientRegistration from '../pages/registration/client/ClientRegistration.tsx';
 import WitchRegistration from '../pages/registration/witch/WitchRegistration.tsx';
 import HomePage from '../pages/home/HomePage.tsx'
+import HomeAgencia from "../components/HomeAgencia/HomeAgencia.tsx";
 
 const SystemRoutes = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const SystemRoutes = createBrowserRouter([
         element: <ChangePassword />
       }
     ]
+  },
+  {
+    path: '/HomeAgencia',
+    element: <HomeAgencia />
   }
 ]);
 

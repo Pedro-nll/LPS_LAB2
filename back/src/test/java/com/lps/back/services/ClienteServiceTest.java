@@ -20,9 +20,6 @@ import com.lps.back.models.Cliente;
 import com.lps.back.models.Emprego;
 import com.lps.back.models.Endereco;
 import com.lps.back.repositories.ClienteRepository;
-import com.lps.back.services.EmpregoService;
-import com.lps.back.services.EnderecoService;
-import com.lps.back.services.UserService;
 
 class ClienteServiceTest {
 
@@ -128,5 +125,19 @@ class ClienteServiceTest {
 
         assertNotNull(result);
         assertEquals(mockCliente, result);
+    }
+
+    @Test
+    void test_cliente_getSalario() {
+        Cliente mockCliente = new Cliente();
+        Emprego emprego1 = new Emprego();
+        emprego1.setRendimento(1000.0);
+        Emprego emprego2 = new Emprego();
+        emprego2.setRendimento(2000.0);
+        mockCliente.setEmpregos(Arrays.asList(emprego1, emprego2));
+
+        double totalSalario = mockCliente.getSalario();
+
+        assertEquals(3000.0, totalSalario);
     }
 }

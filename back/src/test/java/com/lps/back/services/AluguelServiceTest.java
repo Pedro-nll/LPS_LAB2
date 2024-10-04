@@ -16,7 +16,6 @@ import com.lps.back.dtos.AluguelDTO;
 import com.lps.back.enumeration.Situacao;
 import com.lps.back.models.*;
 import com.lps.back.repositories.AluguelRepository;
-import com.lps.back.services.*;
 
 class AluguelServiceTest {
 

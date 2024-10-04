@@ -2,7 +2,6 @@ package com.lps.back.services;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
@@ -21,7 +20,6 @@ import com.lps.back.dtos.AutomovelRecord;
 import com.lps.back.models.Agencia;
 import com.lps.back.models.Automovel;
 import com.lps.back.repositories.AutomovelRepository;
-import com.lps.back.services.AgenciaService;
 
 class AutomovelServiceTest {
 

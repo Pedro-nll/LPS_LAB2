@@ -40,8 +40,6 @@ public class AutomovelController {
     @GetMapping("/findById")
     public ResponseEntity<Automovel> findById(@RequestParam String matricula) {
         Automovel auto = automovelService.findById(matricula);
-        if (auto == null)
-            return ResponseEntity.notFound().build();
         return ResponseEntity.ok().body(auto);
     }
 

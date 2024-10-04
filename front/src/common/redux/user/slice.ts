@@ -1,10 +1,7 @@
 import { createSlice, Slice } from '@reduxjs/toolkit';
-import { User, UserToken } from '../../helpers/types';
+import { User, UserSlice, UserToken } from '../../helpers/types';
 
-type UserSlice = {
-  user: User
-  forgotPasswordUser: UserToken
-}
+
 
 const initialState : UserSlice = {
   user: {

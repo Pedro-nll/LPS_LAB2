@@ -51,3 +51,22 @@ export type Automovel = {
     // agencia?: Agencia;
     // aluguel?: Aluguel[];
   };
+
+
+  export type AluguelDTO = {
+    id?: number;
+    valorMensal?: number;
+    valorPendente?: number;
+    atrasado?: boolean;
+    ativo?: boolean;
+    taxaJuros?: number;
+    automovelMatricula?: string;
+    agenciaId?: number;
+    banco?: number;
+    clienteId?: number;
+  };
+  
+  export type UserSlice = {
+    user: User
+    forgotPasswordUser: UserToken
+  }

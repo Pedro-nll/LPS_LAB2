@@ -36,7 +36,7 @@ const HomePage = () => {
           {loading ? <p>Carregando...</p> : data.map((a:Automovel) => {
             console.log(a)
             return (
-              <AutomovelCard automovel={a} />)
+              <AutomovelCard {...a} />)
           })}
         </Container>
 

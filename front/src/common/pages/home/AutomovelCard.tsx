@@ -4,12 +4,20 @@ import { Card, Colum, Image } from './style';
 import { Dialog } from 'primereact/dialog';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import api from '../../components/HomeAgencia/Api';
+
+import { InputNumber } from 'primereact/inputnumber';
+        
 
 const AutomovelCard: React.FC<Automovel> = (automovel) => {
 
   const [open, setOpen] = useState(false);
-  const {user} = useSelector<UserSlice>(state => state.userSlice)
-  console.log(user)
+  const[value, setValue] = useState(0);
+  //const {user} = useSelector<UserSlice>(state => state.userReducer)
+
+  let user;
+  api.get('/client').then(resp => user = resp.data)
+  console.log(5, user)
 
   const openModalFunc = () => {
     setOpen(true);
@@ -19,7 +27,7 @@ const AutomovelCard: React.FC<Automovel> = (automovel) => {
     let aluguel: AluguelDTO = {};
 
     aluguel.valorMensal = value;
-    aluguel.clienteId = user.id
+    //aluguel.clienteId = user.id
     
   }
 
@@ -48,12 +56,8 @@ const AutomovelCard: React.FC<Automovel> = (automovel) => {
     </Card>
 
     <Dialog header="Header" visible={open} style={{ width: '50vw' }} onHide={() => {if (!open) return; setOpen(false); }}>
-        <p className="m-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+      <InputNumber value={value} onValueChange={(e) => setValue(e.value || 0)} />
+      <Button label='Confirmar' onClick={() => {alugar(value)}} />
     </Dialog>
 
     </>

@@ -112,7 +112,7 @@ public class AutomovelControllerTest {
         when(automovelService.findById("XYZ999")).thenReturn(null);
 
         mockMvc.perform(get("/findById/XYZ999"))
-                .andExpect(status().isNotFound()); // Expect HTTP 404 status
+                .andExpect(status().isNotFound());
     }
 
     @Test

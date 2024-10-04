@@ -1,7 +1,7 @@
 
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from "primereact/inputtext";
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Space, Subtitle } from '../style.ts';
 
 
@@ -28,7 +28,11 @@ const ClientRegistration: React.FC<ClientRegistrationProps> = ({ index, empregos
         updatedEmpregos[index] = { cargo: cargoInput, empresa: empresaInput, rendimento: rendimentoInput };
         setEmpregos(updatedEmpregos);
     };
-    
+
+    useEffect(() => {
+        console.log(rendimentoInput)
+    }, [rendimentoInput])
+
     return (
         <div>
             <Subtitle>Emprego {index}</Subtitle>
@@ -40,18 +44,6 @@ const ClientRegistration: React.FC<ClientRegistrationProps> = ({ index, empregos
                 value={cargoInput}
                 onChange={(e) => {
                     setCargoInput(e.target.value);
-                    handleInputChange();
-                }}
-            />
-            <Space value={15} />
-            <label htmlFor="empresa">Empresa</label>
-            <InputText
-                id="empresa"
-                className='full-width-input'
-                aria-errormessage={''}
-                value={empresaInput}
-                onChange={(e) => {
-                    setEmpresaInput(e.target.value);
                     handleInputChange();
                 }}
             />
@@ -69,6 +61,19 @@ const ClientRegistration: React.FC<ClientRegistrationProps> = ({ index, empregos
                 }}
             />
             <Space value={15} />
+            <label htmlFor="empresa">Empresa</label>
+            <InputText
+                id="empresa"
+                className='full-width-input'
+                aria-errormessage={''}
+                value={empresaInput}
+                onChange={(e) => {
+                    setEmpresaInput(e.target.value);
+                    handleInputChange();
+                }}
+            />
+            <Space value={15} />
+            
         </div>
     );
 }

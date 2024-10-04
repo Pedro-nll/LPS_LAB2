@@ -64,7 +64,7 @@ public class ClienteControllerTest {
 
     @Test
     void testFindByLoggedUser() throws Exception {
-        when(clienteService.getLoggedPacient()).thenReturn(cliente);
+        when(clienteService.getLogged()).thenReturn(cliente);
 
         mockMvc.perform(get("/cliente"))
                 .andExpect(status().isOk())
@@ -74,7 +74,7 @@ public class ClienteControllerTest {
                 .andExpect(jsonPath("$.rg").value("123456789"))
                 .andExpect(jsonPath("$.cpf").value("12345678901"));
 
-        verify(clienteService, times(1)).getLoggedPacient();
+        verify(clienteService, times(1)).getLogged();
     }
 
     @Test

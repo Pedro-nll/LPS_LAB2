@@ -30,8 +30,8 @@ public class ClienteController {
 
     @GetMapping
     public ResponseEntity<?> findByLoggedUser() {
-        Cliente patient = clienteService.getLoggedPacient();
-        return ResponseEntity.ok(patient);
+        Cliente cliente = clienteService.getLogged();
+        return ResponseEntity.ok(cliente);
 
     }
 

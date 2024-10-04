@@ -1,8 +1,8 @@
-import { Outlet } from 'react-router-dom'
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { login } from './common/redux/user/slice';
+import { DashboardLayout } from "./common/layouts/DashboardLayout";
 
 function App() {
   const navigate = useNavigate();
@@ -21,9 +21,9 @@ function App() {
   }, [])
 
   return (
-    <div>
-        <Outlet />
-    </div>
+    <DashboardLayout>
+    <Outlet />
+  </DashboardLayout>
   )
 }
 

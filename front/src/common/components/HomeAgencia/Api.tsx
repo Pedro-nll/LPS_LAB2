@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const getToken = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user?.accessToken;
-  };
+  const user = JSON.parse(localStorage.getItem('user'));
+  return user?.accessToken;
+};
 
 
 const api = axios.create({
@@ -13,6 +13,7 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
   const token = getToken();
   if (token) {
+    console.log(token)
     config.headers['Authorization'] = `Bearer ${token}`;
   }
   return config;

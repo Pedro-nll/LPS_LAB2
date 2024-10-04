@@ -27,7 +27,7 @@ public class AutomovelController {
     }
 
     @PostMapping("/update")
-    public ResponseEntity<Automovel> update(@RequestBody AutomovelRecord veiculo) {
+    public ResponseEntity<Automovel> update(@RequestBody Automovel veiculo) {
         return ResponseEntity.ok(automovelService.update(veiculo));
     }
 

@@ -5,13 +5,13 @@ import ChangePassword from "../pages/forgotPassword/change/ChangePassword.tsx";
 import Request from "../pages/forgotPassword/request/Request.tsx";
 import CheckToken from "../pages/forgotPassword/token/CheckToken.tsx";
 
+import HomeAgencia from "../components/HomeAgencia/HomeAgencia.tsx";
+import HomePage from '../pages/home/HomePage.tsx';
 import LoginPage from '../pages/login/LoginPage';
 import { RegistrationPage } from '../pages/registration/Registration';
 import AgenciRegistration from '../pages/registration/agencia/AgenciaRegistration.tsx';
 import ClientRegistration from '../pages/registration/client/ClientRegistration.tsx';
 import WitchRegistration from '../pages/registration/witch/WitchRegistration.tsx';
-import HomePage from '../pages/home/HomePage.tsx'
-import HomeAgencia from "../components/HomeAgencia/HomeAgencia.tsx";
 
 const SystemRoutes = createBrowserRouter([
   {
@@ -21,6 +21,10 @@ const SystemRoutes = createBrowserRouter([
       {
         path: 'home',
         element: <HomePage />
+      },
+      {
+        path: '/HomeAgencia',
+        element: <HomeAgencia />
       }
     ],
   },
@@ -65,8 +69,7 @@ const SystemRoutes = createBrowserRouter([
     ]
   },
   {
-    path: '/HomeAgencia',
-    element: <HomeAgencia />
+
   }
 ]);
 

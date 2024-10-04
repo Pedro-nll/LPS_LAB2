@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import {
-    Container,
-    Typography,
     Button,
+    Checkbox,
+    Container,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    FormControlLabel,
+    Paper,
     Table,
     TableBody,
     TableCell,
     TableContainer,
     TableHead,
     TableRow,
-    Paper,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    DialogActions,
     TextField,
-    Checkbox,
-    FormControlLabel,
+    Typography,
 } from '@mui/material';
+import { useEffect, useState } from 'react';
 import api from './Api';
 
 const HomeAgencia = () => {
@@ -40,8 +39,18 @@ const HomeAgencia = () => {
 
     useEffect(() => {
         fetchVehicles();
+        getAgencia()
     }, []);
 
+    const getAgencia = () => {
+        api.get(`${HOST}/agencia`).then((response) => {
+            console.log(response)
+            setCurrentVehicle({
+                ...currentVehicle,
+                ["AgenciaId"]: response.data.id,
+            });
+        })
+    }
     const fetchVehicles = async () => {
         setLoading(true);
         try {

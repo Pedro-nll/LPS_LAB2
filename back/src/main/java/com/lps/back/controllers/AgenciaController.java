@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lps.back.models.Agencia;
+import com.lps.back.models.Cliente;
 import com.lps.back.services.AgenciaService;
 
 @RestController
@@ -29,6 +30,13 @@ public class AgenciaController {
     @PutMapping("/update")
     public ResponseEntity<Agencia> update(@RequestBody Agencia agencia) {
         return ResponseEntity.ok(agenciaService.update(agencia));
+    }
+
+    @GetMapping
+    public ResponseEntity<?> findByLoggedUser() {
+        Agencia patient = agenciaService.getLogged();
+        return ResponseEntity.ok(patient);
+
     }
 
     @DeleteMapping("/delete")

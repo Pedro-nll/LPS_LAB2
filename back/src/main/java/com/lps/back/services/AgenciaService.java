@@ -3,10 +3,13 @@ package com.lps.back.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.lps.back.exceptions.ObjectNotFoundException;
 import com.lps.back.models.Agencia;
 import com.lps.back.repositories.AgenciaRepository;
 
@@ -18,6 +21,9 @@ public class AgenciaService {
 
     @Autowired
     private AgenciaRepository agenciaRepository;
+
+    @Autowired
+    private UserService userService;
     @Autowired
     private final PasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -45,5 +51,13 @@ public class AgenciaService {
 
     public List<Agencia> findAll() {
         return agenciaRepository.findAll();
+    }
+
+    public Agencia getLogged() throws ObjectNotFoundException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        Agencia user = (Agencia) userService.findByEmail(authentication.getName());
+
+        return user;
     }
 }

@@ -36,6 +36,12 @@ public class AutomovelService {
         return automovelRepository.save(automovel);
     }
 
+    public Automovel update(Automovel automovel) {
+        Automovel automovelInBase = this.findById(automovel.getMatricula());
+        automovel.setAluguel(automovelInBase.getAluguel());
+        return automovelRepository.save(automovel);
+    }
+
     public void delete(String matricula) {
         automovelRepository.deleteById(matricula);
     }

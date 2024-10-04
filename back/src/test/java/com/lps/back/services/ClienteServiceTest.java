@@ -1,5 +1,6 @@
 package com.lps.back.services;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
@@ -62,7 +63,7 @@ class ClienteServiceTest {
         Cliente mockCliente = new Cliente();
         when(userService.findByEmail("test@example.com")).thenReturn(mockCliente);
 
-        Cliente result = clienteService.getLoggedPacient();
+        Cliente result = clienteService.getLogged();
         assertNotNull(result);
         assertEquals(mockCliente, result);
     }

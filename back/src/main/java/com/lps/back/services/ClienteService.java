@@ -37,12 +37,12 @@ public class ClienteService {
         return this.encoder;
     }
 
-    public Cliente getLoggedPacient() throws ObjectNotFoundException {
+    public Cliente getLogged() throws ObjectNotFoundException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        Cliente patient = (Cliente) userService.findByEmail(authentication.getName());
+        Cliente user = (Cliente) userService.findByEmail(authentication.getName());
 
-        return patient;
+        return user;
     }
 
     public Cliente save(Cliente cliente) {

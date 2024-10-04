@@ -26,7 +26,6 @@ import org.springframework.http.MediaType;
 import java.util.List;
 import java.util.Arrays;
 
-
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
 public class AutomovelControllerTest {
@@ -58,8 +57,7 @@ public class AutomovelControllerTest {
         automovel.setImageUrl("http://test.com/image.jpg");
 
         automovelRecord = new AutomovelRecord(
-            "ABC123", 2022, "TestMarca", "TestModelo", "XYZ789", false, "http://test.com/image.jpg", 1L
-        );
+                "ABC123", 2022, "TestMarca", "TestModelo", "XYZ789", false, "http://test.com/image.jpg", 1L);
     }
 
     @Test
@@ -99,16 +97,22 @@ public class AutomovelControllerTest {
     }
 
     @Test
-    void testFindById() throws Exception {
+    void testFindById_Success() throws Exception {
         when(automovelService.findById("ABC123")).thenReturn(automovel);
 
-        mockMvc.perform(get("/veiculo/findById")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("\"ABC123\""))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.matricula").value("ABC123"))
-                .andExpect(jsonPath("$.marca").value("TestMarca"))
+        mockMvc.perform(get("/veiculo/findById?matricula=ABC123"))
+                .andExpect(status().isOk()) // Expect HTTP 200 status
+                .andExpect(jsonPath("$.matricula").value("ABC123")) // Check that the matricula matches
+                .andExpect(jsonPath("$.marca").value("TestMarca")) // Check other fields
                 .andExpect(jsonPath("$.modelo").value("TestModelo"));
+    }
+
+    @Test
+    void testFindById_NotFound() throws Exception {
+        when(automovelService.findById("XYZ999")).thenReturn(null);
+
+        mockMvc.perform(get("/findById/XYZ999"))
+                .andExpect(status().isNotFound()); // Expect HTTP 404 status
     }
 
     @Test
@@ -129,7 +133,7 @@ public class AutomovelControllerTest {
         List<Automovel> automoveis = Arrays.asList(automovel, new Automovel());
         when(automovelService.findByAgenciaId(1L)).thenReturn(automoveis);
 
-        mockMvc.perform(get("/veiculo/findByAgenciaId")
+        mockMvc.perform(get("/veiculo/findByAgenciaId/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("1"))
                 .andExpect(status().isOk())

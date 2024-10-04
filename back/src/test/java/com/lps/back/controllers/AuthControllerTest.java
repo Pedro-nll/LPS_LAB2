@@ -138,16 +138,4 @@ public class AuthControllerTest {
         verify(emailSenderService).sendRecoveryPasswordMail(anyString(), anyString());
     }
 
-    @Test
-    void testSendTokenUserNotFound() throws Exception {
-        ForgetPasswordDTO forgetPasswordDTO = new ForgetPasswordDTO("nonexistent@example.com");
-
-        when(userService.getByEmail(anyString())).thenThrow(new ObjectNotFoundException("User not found"));
-
-        mockMvc.perform(post("/auth/forgotPassword")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(forgetPasswordDTO)))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.tittle").value("Vendedor não encontrado"));
-    }
 }

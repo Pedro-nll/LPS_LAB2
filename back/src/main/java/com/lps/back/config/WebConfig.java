@@ -66,7 +66,7 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
                         Agencia agencia = new Agencia();
                         agencia.setName("Agencia 1");
                         agencia.setEmail("agencia1@example.com");
-                        agencia.setPassword(encoder.encode(("password123")));
+                        agencia.setPassword(encoder.encode(("123")));
                         agenciaRepository.save(agencia);
 
                         // Create and save a 'Banco' entity
@@ -76,12 +76,12 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
 
                         // Create and save a 'Cliente' entity
                         Cliente cliente = new Cliente();
-                        cliente.setName("Cliente 1");
-                        cliente.setEmail("cliente1@example.com");
-                        cliente.setPassword(encoder.encode(("password123")));
+                        cliente.setName("123");
+                        cliente.setEmail("123");
+                        cliente.setPassword(encoder.encode(("123")));
                         cliente.setRg("123456789");
                         cliente.setCpf("12345678901");
-                        clienteRepository.save(cliente);
+                        clienteRepository.save(cliente);        
 
                         // Create and save an 'Automovel' entity
                         Automovel automovel = new Automovel();

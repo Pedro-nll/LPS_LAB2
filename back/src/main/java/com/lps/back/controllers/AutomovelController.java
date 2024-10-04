@@ -3,9 +3,11 @@ package com.lps.back.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lps.back.dtos.AutomovelRecord;
@@ -36,8 +38,11 @@ public class AutomovelController {
     }
 
     @GetMapping("/findById")
-    public ResponseEntity<Automovel> findById(@RequestBody String matricula) {
-        return ResponseEntity.ok(automovelService.findById(matricula));
+    public ResponseEntity<Automovel> findById(@RequestParam String matricula) {
+        Automovel auto = automovelService.findById(matricula);
+        if (auto == null)
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok().body(auto);
     }
 
     @GetMapping("/all")
@@ -45,8 +50,8 @@ public class AutomovelController {
         return ResponseEntity.ok(automovelService.findAll());
     }
 
-    @GetMapping("/findByAgenciaId")
-    public ResponseEntity<Iterable<Automovel>> findByAgenciaId(@RequestBody Long id) {
+    @GetMapping("/findByAgenciaId/{id}")
+    public ResponseEntity<Iterable<Automovel>> findByAgenciaId(@PathVariable Long id) {
         return ResponseEntity.ok(automovelService.findByAgenciaId(id));
     }
 

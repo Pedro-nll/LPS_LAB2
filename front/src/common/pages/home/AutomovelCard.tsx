@@ -27,9 +27,9 @@ const AutomovelCard: React.FC<Automovel> = (automovel) => {
     <>
     <Card>
       <Colum>
-        <Image src={automovel.imageUrl} alt="Automóvel" />
+        {automovel.imageUrl ? <Image src={automovel.imageUrl} alt="Automóvel" /> : ""}
       </Colum>
-    
+
       <Colum>
         <p>Ano: {automovel.ano}</p>
       </Colum>

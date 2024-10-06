@@ -111,7 +111,7 @@ const ClientRegistration = () => {
         <>
             <img src="/cars/clientRegisterImage.png" alt="Left Background" style={{ position: "absolute", left: 0, top: 0, height: "100%", width: "100%", zIndex: 0 }} />
             <div className="card flex flex-row justify-content-center" style={{ paddingTop: "20vh", position: "relative" }}>
-                <Stepper ref={stepperRef} style={{ flexBasis: '50rem', border: "1px solid black", padding: "20px", backgroundColor: "white", zIndex: 1 }}>
+                <Stepper ref={stepperRef} style={{ flexBasis: '50rem', backdropFilter: "blur(10px)", padding: "10vh", borderRadius: "16px", border: "2px solid", zIndex: 1 }}>
                     <StepperPanel header="Dados de Usuario">
                         <div className="flex flex-column h-20rem">
                             <Space value={15} />
@@ -131,7 +131,9 @@ const ClientRegistration = () => {
                                 value={passwordIntput} onChange={(e) => setPasswordIntput(e.target.value)} toggleMask />
                             <Space value={15} />
                         </div>
-                        <div className="flex pt-4 justify-content-end">
+                        <div className="flex pt-4 justify-content-between">
+                            <Button label="Back" severity="secondary" icon="pi pi-arrow-left" onClick={() => { navigate('/login') }} />
+
                             <Button label="Next" icon="pi pi-arrow-right" iconPos="right" onClick={() => stepperRef.current.nextCallback()} />
                         </div>
                     </StepperPanel>

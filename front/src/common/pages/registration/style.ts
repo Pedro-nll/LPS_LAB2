@@ -24,11 +24,10 @@ export const Container = styled.div<ContainerProps>`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    box-shadow: 0 0 0 4px white, 0 0 15px rgba(0, 0, 0, 0.3); 
+    border: 2px solid;
+    backdrop-filter: blur(30px);
     border-radius: 8px; 
     padding: 25px 25px ${props => props.size || 0}px 25px;
-    box-sizing: border-box;
 
 `
 export const Space = styled.div<SpaceProps>`

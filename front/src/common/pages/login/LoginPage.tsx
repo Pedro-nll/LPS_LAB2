@@ -81,7 +81,7 @@ const LoginPage = () => {
             <img src="/cars/loginLeft.png" alt="Left Background" style={{ position: "absolute", left: 0, top: 0, height: "100%", width: "50%", transform: "translateX(-20%)", zIndex: 0, objectFit: "contain" }} />
             <img src="/cars/loginRight.png" alt="Right Background" style={{ position: "absolute", right: 0, top: 0, height: "100%", width: "50%", zIndex: 0, objectFit: "contain", }} />
             <div className="flex justify-content-center" style={{ paddingTop: "20vh", position: "relative", }}>
-                <div className='flex flex-column h-40rem' style={{ backgroundColor: "white", padding: "10vh", borderRadius: "16px" }}>
+                <div className='flex flex-column h-40rem' style={{ backdropFilter: "blur(10px)", padding: "10vh", borderRadius: "16px", border:"2px solid" }}>
                     <Title>Login</Title>
                     <Space value={20} />
                     <form onSubmit={onSubmit}>

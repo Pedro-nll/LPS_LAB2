@@ -46,8 +46,6 @@ public class AluguelService {
             this.changeState(aluguel, Situacao.RECUSADOPELOBANCO);
         } else if (aluguel.getSituacao() != Situacao.APROVADO) {
             this.changeState(aluguel, Situacao.APROVADOPELOBANCO);
-            automovel.setAlugado(true);
-            automovelService.update(automovel);
         }
         return aluguel;
     }
@@ -111,6 +109,9 @@ public class AluguelService {
     public void changeState(Long aluguelId, Situacao state) {
         Aluguel aluguel = this.findById(aluguelId);
         aluguel.setSituacao(state);
+        Automovel automovel = aluguel.getAutomovel();
+        automovel.setAlugado(state == Situacao.APROVADO);
+        automovelService.update(automovel);
         aluguelRepository.save(aluguel);
     }
 }

@@ -74,11 +74,9 @@ const HomePage = () => {
   };
 
   const listTemplate = (data: Automovel[]) => {
-    return <div className="grid grid-nogutter">{data.map((automovel: Automovel) => itemTemplate(automovel))}</div>;
+    return <div className="grid grid-nogutter" style={{ height: "100vh" }}>{data.map((automovel: Automovel) => itemTemplate(automovel))}</div>;
   };
-  const listTemplateSkeleton = (data: Automovel[]) => {
-    return <div className="grid grid-nogutter">{data.map((automovel: Automovel) => itemTemplate(automovel))}</div>;
-  };
+
   return (
     <>
       <header className='flex flex-row-reverse flex-wrap gap-1' >
@@ -86,12 +84,8 @@ const HomePage = () => {
         <Button onClick={() => handleViewChange('all')} className={view === 'all' ? 'active' : ''}>Todos os Disponíveis</Button>
 
       </header>
-      {loading ? (
-        <DataView value={data} listTemplate={listTemplateSkeleton} layout="grid" />
-      ) : (
+      <DataView value={data} listTemplate={listTemplate} layout="grid" style={{ height: "100vh" }} />
 
-        <DataView value={data} listTemplate={listTemplate} layout="grid" />
-      )}
       <RentCarModal open={openModal} onClose={change} automovel={rentCar} setAutomovel={setRentCar} />
     </>
   );

@@ -12,8 +12,6 @@ License: none (public domain)
 
 html,
 body,
-div,
-span,
 applet,
 object,
 iframe,
@@ -98,7 +96,17 @@ video {
     font: inherit;
     vertical-align: baseline;
 }
+span{
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 
+}
+.p-stepper-separator{
+    margin: 0;
+}
 /* HTML5 display-role reset for older browsers */
 article,
 aside,

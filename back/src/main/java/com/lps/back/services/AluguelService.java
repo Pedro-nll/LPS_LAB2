@@ -1,5 +1,6 @@
 package com.lps.back.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,11 +41,13 @@ public class AluguelService {
         Agencia agencia = agenciaService.findById(aluguelDTO.agenciaId());
         Banco banco = bancoService.findById(aluguelDTO.banco());
         Aluguel aluguel = aluguelDTO.toEntity(agencia, automovel, cliente, banco);
-        ;
+
         if (!bancoService.checkClienteValue(aluguel)) {
             this.changeState(aluguel, Situacao.RECUSADOPELOBANCO);
         } else if (aluguel.getSituacao() != Situacao.APROVADO) {
             this.changeState(aluguel, Situacao.APROVADOPELOBANCO);
+            automovel.setAlugado(true);
+            automovelService.update(automovel);
         }
         return aluguel;
     }
@@ -83,6 +86,16 @@ public class AluguelService {
     public List<Aluguel> findByClienteId(Long id) {
         Cliente cliente = clienteService.getById(id);
         return aluguelRepository.findByCliente(cliente);
+    }
+
+    public List<Automovel> findByClienteIdCars(Long id) {
+        Cliente cliente = clienteService.getById(id);
+        List<Aluguel> alugueis = aluguelRepository.findByCliente(cliente);
+        List<Automovel> automoveis = new ArrayList<Automovel>();
+        for (Aluguel aluguel : alugueis) {
+            automoveis.add(aluguel.getAutomovel());
+        }
+        return automoveis;
     }
 
     public List<Aluguel> findByAgenciaId(Long id) {

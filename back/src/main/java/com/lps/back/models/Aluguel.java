@@ -44,8 +44,8 @@ public class Aluguel {
     @Column(nullable = false, name = "situacao", scale = 0, columnDefinition = "SMALLINT")
     private Situacao situacao;
 
-    @OneToOne(targetEntity = Automovel.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "matricula", unique = true)
+    @ManyToOne(targetEntity = Automovel.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "matricula", unique = false)
     @JsonIgnore
     private Automovel automovel;
 

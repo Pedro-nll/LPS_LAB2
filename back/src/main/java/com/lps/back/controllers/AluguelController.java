@@ -30,7 +30,7 @@ public class AluguelController {
 
     @GetMapping("/findByClienteId/{id}")
     public ResponseEntity<?> findByClienteId(@PathVariable Long id) {
-        return ResponseEntity.ok(aluguelService.findByClienteId(id));
+        return ResponseEntity.ok(aluguelService.findByClienteIdCars(id));
     }
 
     @GetMapping("/findByAutomovelId/{id}")

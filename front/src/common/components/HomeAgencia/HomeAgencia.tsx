@@ -47,11 +47,8 @@ const HomeAgencia = () => {
     }, [AgenciaId])
 
     const getAgencia = () => {
-        api.get(`${HOST}/agencia`).then((response) => {
-            console.log(response.data.id)
-            setAgenciaId(response.data.id)
-
-        })
+        const agencia = JSON.parse(localStorage.getItem('user') )
+        setAgenciaId(agencia.id)
     }
     const fetchVehicles = async () => {
         setLoading(true);
@@ -234,15 +231,7 @@ const HomeAgencia = () => {
                         onChange={handleInputChange}
                         margin="normal"
                     />
-                    <TextField
-                        name="AgenciaId"
-                        label="Agencia ID"
-                        fullWidth
-                        type="number"
-                        value={currentVehicle.AgenciaId}
-                        onChange={handleInputChange}
-                        margin="normal"
-                    />
+
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>

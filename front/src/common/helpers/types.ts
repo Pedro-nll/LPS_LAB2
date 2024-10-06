@@ -74,3 +74,16 @@ export type Automovel = {
   export type RentCarSlice = {
     car: Automovel
   }
+
+export type Rent = {
+    id?: number;
+    valorMensal: number;
+    valorPendente: number;
+    atrasado: boolean;
+    ativo: boolean;
+    taxaJuros: number;
+    automovelMatricula: string;
+    agenciaId: number;
+    banco: number;
+    clienteId: number;
+};

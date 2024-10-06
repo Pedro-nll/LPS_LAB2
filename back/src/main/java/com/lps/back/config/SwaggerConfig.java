@@ -12,7 +12,7 @@ public class SwaggerConfig {
 
     @Bean
     public OpenAPI openAPI() {
-        return new OpenAPI().info(new Info().title("LPS API").description("API for LPS project")
-                .contact(new Contact().name("LPS Team")).version("1.0"));
+        return new OpenAPI().info(new Info().title("Aramune Express Aluguel API").description("API for Aramune Express Aluguel project")
+                .contact(new Contact().name("Aramune Express Aluguel Team")).version("1.0"));
     }
 }

@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { User, UserLogin } from '../../helpers/types.ts';
 import { login } from '../../redux/user/slice.js';
+import api from '../../services/api.tsx';
 import userService from '../../services/userService.ts';
 import Validade from '../../utils/Validate.tsx';
 import { ErrorText, Space, Title } from './style.ts';
@@ -28,11 +29,21 @@ const LoginPage = () => {
         }
     }, []);
 
-    const navigateBasedOnUserType = (userType) => {
+    const navigateBasedOnUserType = (userType: string) => {
         if (userType === "isAgencia") {
-            navigate('/HomeAgencia');
+            api.get('/agencia').then((response) => {
+                localStorage.setItem("user", JSON.stringify(response.data));
+                navigate('/HomeAgencia');
+            }).catch((error) => {
+                console.error('Error fetching agency:', error);
+            })
         } else {
-            navigate('/home');
+            api.get('/cliente').then((response) => {
+                localStorage.setItem("user", JSON.stringify(response.data));
+                navigate('/home');
+            }).catch((error) => {
+                console.error('Error fetching agency:', error);
+            })
         }
     };
 

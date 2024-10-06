@@ -23,7 +23,7 @@ public class ClienteController {
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody Cliente cliente) {
         ResponseDTO response = new ResponseDTO("Cliente Cadastrado",
-                "Seja bem-vindo à LPS, a melhor agência de alugeis do Brasil!");
+                "Seja bem-vindo à Aramune Express Aluguel, a melhor agência de alugeis do Brasil!");
         clienteService.save(cliente);
         return ResponseEntity.ok(response);
     }

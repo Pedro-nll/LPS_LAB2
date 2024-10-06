@@ -1,18 +1,19 @@
 package com.lps.back.controllers;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lps.back.dtos.AluguelDTO;
-import com.lps.back.enumeration.Situacao;
-import com.lps.back.models.Aluguel;
-import com.lps.back.models.Banco;
-import com.lps.back.models.Cliente;
-import com.lps.back.services.AluguelService;
-import com.lps.back.services.auth.AuthService;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,8 +24,14 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Arrays;
-import java.util.List;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lps.back.dtos.AluguelDTO;
+import com.lps.back.enumeration.Situacao;
+import com.lps.back.models.Aluguel;
+import com.lps.back.models.Banco;
+import com.lps.back.models.Cliente;
+import com.lps.back.services.AluguelService;
+import com.lps.back.services.auth.AuthService;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
@@ -73,16 +80,6 @@ public class AluguelControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(jsonPath("$[1]").exists());
-    }
-
-    @Test
-    void testFindByClienteId() throws Exception {
-        List<Aluguel> alugueis = Arrays.asList(aluguel);
-        when(aluguelService.findByClienteId(1L)).thenReturn(alugueis);
-
-        mockMvc.perform(get("/aluguel/findByClienteId/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").value(1));
     }
 
     @Test

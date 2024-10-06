@@ -68,7 +68,7 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
 
         @Override
         public void run(String... args) throws Exception {
-                if (activeProfile.equals("dev")) {
+                if (activeProfile.equals("test")) {
                         Agencia agencia = new Agencia();
                         agencia.setName("Agencia 1");
                         agencia.setEmail("agencia1@example.com");

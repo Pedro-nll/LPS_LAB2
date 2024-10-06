@@ -38,7 +38,7 @@ export const AutomovelCard = ({ automovel, setAutomovel }: AutomovelCardProps) =
           <div className="text-2xl font-bold">{automovel.modelo} - {automovel.ano}</div>
         </div>
         <div className="flex align-items-center justify-content-between">
-          <span className="text-2xl font-semibold">${automovel.ano}</span>
+          <span className="text-2xl font-semibold"></span>
           <Button icon="pi pi-shopping-cart" className="p-button-rounded" disabled={automovel.alugado === true} onClick={() => {
             setAutomovel(automovel);
           }}></Button>

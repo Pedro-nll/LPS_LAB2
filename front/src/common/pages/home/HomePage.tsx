@@ -1,6 +1,6 @@
 
-import { Button } from 'primereact/button';
 import { DataView } from 'primereact/dataview';
+import { SelectButton } from 'primereact/selectbutton';
 import { useEffect, useState } from 'react';
 import { Automovel } from '../../helpers/types';
 import api from '../../services/api';
@@ -18,9 +18,9 @@ const HomePage = () => {
   }
 
   const [data, setData] = useState<Automovel[]>([{}, {}, {}, {}, {}, {}]);
-  const [view, setView] = useState<'all' | 'rented'>('all');
-
-  const handleViewChange = (newView: 'all' | 'rented') => {
+  const [view, setView] = useState<"Disponiveis" | "Alugados">('Disponiveis');
+  const options = ["all", "rented"];
+  const handleViewChange = (newView: "Disponiveis" | "Alugados") => {
     setView(newView);
   };
 
@@ -40,8 +40,8 @@ const HomePage = () => {
 
   const fetchVehicles = () => {
     setLoading(true);
-    if (view === 'all') {
-      api.get('/veiculo/all').then((response) => {
+    if (view === 'Disponiveis') {
+      api.get('/veiculo/allDisponivel').then((response) => {
         setData(response.data);
         console.log(response.data);
       }).catch((error) => {
@@ -80,9 +80,8 @@ const HomePage = () => {
   return (
     <>
       <header className='flex flex-row-reverse flex-wrap gap-1' >
-        <Button onClick={() => handleViewChange('rented')} className={view === 'rented' ? 'active' : ''}>Seus Carros Alugados</Button>
-        <Button onClick={() => handleViewChange('all')} className={view === 'all' ? 'active' : ''}>Todos os Disponíveis</Button>
 
+        <SelectButton value={view} onChange={(e) => handleViewChange(e.value)} options={["Disponiveis", "Alugados"]} />
       </header>
       <DataView value={data} listTemplate={listTemplate} layout="grid" style={{ height: "100vh" }} />
 

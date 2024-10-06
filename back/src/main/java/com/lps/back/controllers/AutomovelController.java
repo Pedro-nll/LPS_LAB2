@@ -48,6 +48,11 @@ public class AutomovelController {
         return ResponseEntity.ok(automovelService.findAll());
     }
 
+    @GetMapping("/allDisponivel")
+    public ResponseEntity<Iterable<Automovel>> findAllDisponivel() {
+        return ResponseEntity.ok(automovelService.findAllDisponivel());
+    }
+
     @GetMapping("/findByAgenciaId/{id}")
     public ResponseEntity<Iterable<Automovel>> findByAgenciaId(@PathVariable Long id) {
         return ResponseEntity.ok(automovelService.findByAgenciaId(id));

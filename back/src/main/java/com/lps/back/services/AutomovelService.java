@@ -54,6 +54,10 @@ public class AutomovelService {
         return automovelRepository.findAll();
     }
 
+    public List<Automovel> findAllDisponivel() {
+        return automovelRepository.findByAlugado(false);
+    }
+
     public List<Automovel> findByAgenciaId(Long id) {
         return automovelRepository.findByAgenciaId(id);
     }

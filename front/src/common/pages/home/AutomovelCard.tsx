@@ -34,7 +34,7 @@ export const AutomovelCard = ({ automovel, setAutomovel }: AutomovelCardProps) =
           <Tag value={automovel.alugado ? "Indisponivel" : "Disponivel"} style={{ padding: "4px" }} severity={getSeverity()} />
         </div>
         <div className="flex flex-column align-items-center gap-3 py-5">
-          <img className="w-9 shadow-2 border-round" src={`${automovel.imageUrl}`} alt={automovel.modelo} />
+          <img className="w-9 shadow-2 border-round" style={{ height: "200px" }} src={`${automovel.imageUrl}`} alt={automovel?.modelo || ""} />
           <div className="text-2xl font-bold">{automovel.modelo} - {automovel.ano}</div>
         </div>
         <div className="flex align-items-center justify-content-between">

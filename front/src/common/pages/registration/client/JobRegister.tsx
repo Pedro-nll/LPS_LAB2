@@ -35,7 +35,7 @@ const ClientRegistration: React.FC<ClientRegistrationProps> = ({ index, empregos
 
     return (
         <div>
-            <Subtitle>Emprego {index}</Subtitle>
+            <Subtitle>Emprego {index + 1}</Subtitle>
             <label htmlFor="cargo">Cargo</label>
             <InputText
                 id="cargo"
@@ -73,7 +73,7 @@ const ClientRegistration: React.FC<ClientRegistrationProps> = ({ index, empregos
                 }}
             />
             <Space value={15} />
-            
+
         </div>
     );
 }

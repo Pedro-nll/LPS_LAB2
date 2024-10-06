@@ -1,7 +1,5 @@
 // import styled components
 import styled from 'styled-components';
-import * as colors from '../../../styles/types/Colors';
-import { Theme } from '../../../styles/themes/theme';
 export const Container = styled.div`
     display: flex;
     flex-direction: column;

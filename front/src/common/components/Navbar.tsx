@@ -150,7 +150,7 @@ export default function PrimarySearchAppBar(props: INavBar) {
 
     return (
         <Box>
-            <AppBar position="sticky" color="secondary">
+            <AppBar position="sticky" style={{ backgroundColor: "#2b2e3b" }}>
                 <Toolbar>
 
                     <Typography
@@ -159,9 +159,9 @@ export default function PrimarySearchAppBar(props: INavBar) {
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}
                     >
-                        <span className="font-base font-sans">Lab</span>
+                        <span className="font-base font-sans">Aramune </span>
                         <span className="font-light font-sans tracking-tight">
-                            2
+                            Express Aluguel
                         </span>
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
@@ -214,3 +214,4 @@ export default function PrimarySearchAppBar(props: INavBar) {
 }
 
 export { PrimarySearchAppBar };
+

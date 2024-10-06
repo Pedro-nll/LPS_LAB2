@@ -1814,8 +1814,11 @@ form-data@^4.0.0:
     "@mui/x-date-pickers" "^7.14.0"
     "@reduxjs/toolkit" "^2.2.7"
     axios "^1.7.5"
-    front "file:../../../../../../Users/pedro/AppData/Local/Yarn/Cache/v6/npm-front-0.0.0-2582a5b3-6dee-4382-a749-90dd93fe3ea7-1727914567106/node_modules/front"
+    front "file:../../../AppData/Local/Yarn/Cache/v6/npm-front-0.0.0-a1fd00cd-156e-44c0-9006-bd02c72c8aac-1728171316048/node_modules/front"
+    install "^0.13.0"
     material-react-table "^2.13.1"
+    primeicons "^7.0.0"
+    primereact "^10.8.3"
     react "^18.3.1"
     react-dom "^18.3.1"
     react-redux "^9.1.2"
@@ -1823,7 +1826,7 @@ form-data@^4.0.0:
     redux "^5.0.1"
     redux-logger "^3.0.6"
     styled-components "^6.1.12"
-    tailwindcss "^3.4.10"
+    tailwindcss "^3.4.13"
 
 fsevents@~2.3.2, fsevents@~2.3.3:
   version "2.3.3"
@@ -2011,6 +2014,11 @@ imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz"
   integrity sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==
+
+install@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/install/-/install-0.13.0.tgz#6af6e9da9dd0987de2ab420f78e60d9c17260776"
+  integrity sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==
 
 internal-slot@^1.0.7:
   version "1.0.7"
@@ -2670,6 +2678,16 @@ prelude-ls@^1.2.1:
   resolved "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
+primeflex@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/primeflex/-/primeflex-3.3.1.tgz#361dddf6eb5db50d733e4cddd4b6e376a3d7bd68"
+  integrity sha512-zaOq3YvcOYytbAmKv3zYc+0VNS9Wg5d37dfxZnveKBFPr7vEIwfV5ydrpiouTft8MVW6qNjfkaQphHSnvgQbpQ==
+
+primeicons@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/primeicons/-/primeicons-7.0.0.tgz#6b25c3fdcb29bb745a3035bdc1ed5902f4a419cf"
+  integrity sha512-jK3Et9UzwzTsd6tzl2RmwrVY/b8raJ3QZLzoDACj+oTJ0oX7L9Hy+XnVwgo4QVKlKpnP/Ur13SXV/pVh4LzaDw==
+
 primereact@^10.8.3:
   version "10.8.3"
   resolved "https://registry.yarnpkg.com/primereact/-/primereact-10.8.3.tgz#124696b4fd6de45f1aa11a249b01e6c74ad0bae2"
@@ -3153,9 +3171,9 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-tailwindcss@^3.4.10:
+tailwindcss@^3.4.13:
   version "3.4.13"
-  resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.4.13.tgz"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.4.13.tgz#3d11e5510660f99df4f1bfb2d78434666cb8f831"
   integrity sha512-KqjHOJKogOUt5Bs752ykCeiwvi0fKVkr5oqsFNt/8px/tA8scFPIlkygsf6jXrfCqGHz7VflA6+yytWuM+XhFw==
   dependencies:
     "@alloc/quick-lru" "^5.2.0"

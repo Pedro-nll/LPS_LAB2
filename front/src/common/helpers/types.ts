@@ -48,7 +48,7 @@ export type Automovel = {
     placa?: string;
     alugado?: boolean;
     imageUrl?: string;
-    // agencia?: Agencia;
+    agencia?: any;
     // aluguel?: Aluguel[];
   };
 
@@ -69,4 +69,8 @@ export type Automovel = {
   export type UserSlice = {
     user: User
     forgotPasswordUser: UserToken
+  }
+
+  export type RentCarSlice = {
+    car: Automovel
   }

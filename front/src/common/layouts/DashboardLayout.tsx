@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import { Box } from '@mui/system';
 import PrimarySearchAppBar from '../components/Navbar';
 interface DashboardLayoutProps {
     children: React.ReactNode;
@@ -14,12 +13,12 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
 
 
     return (
-        <Box sx={{ minHeight: '100svh', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ minHeight: '100svh', display: 'flex', flexDirection: 'column' }}>
             <PrimarySearchAppBar openSideBar={openNavBar} setOpenSideBar={setOpenNavBar} />
-            <Box display={'flex'} sx={{ backgroundColor: '#f3f4f6', flexGrow: 1 }}>
+            <div style={{ display: "flex", backgroundColor: '#f3f4f6', flexGrow: 1 }}>
 
                 <main style={{ width: '100%', margin: '16px' }}>{children}</main>
-            </Box>
-        </Box>
+            </div>
+        </div>
     );
 };

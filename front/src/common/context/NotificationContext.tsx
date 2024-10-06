@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode, useCallback, useEffect } from 'react';
-import { Snackbar, Alert, AlertColor, AlertTitle } from '@mui/material';
+import { Alert, AlertColor, AlertTitle, Snackbar } from '@mui/material';
+import React, { createContext, ReactNode, useCallback, useState } from 'react';
 
 interface INotification {
     message: string;

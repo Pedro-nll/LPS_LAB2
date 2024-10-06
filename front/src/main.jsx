@@ -9,23 +9,23 @@ import "./styles/global.css";
 import { RouterProvider } from "react-router-dom";
 import SystemRoutes from "./common/routes/Routes.tsx";
 
-// _app.js
+
 import { PrimeReactProvider } from 'primereact/api';
-
-
         
-import 'primereact/resources/primereact.min.css';
-import 'primereact/resources/themes/saga-blue/theme.css';
-import './style.css';
-import "./styles/global.css";
+        
+import 'primereact/resources/themes/lara-light-indigo/theme.css'; //theme
+import 'primereact/resources/primereact.min.css'; //core css
+import 'primeicons/primeicons.css'; //icons
+import 'primeflex/primeflex.css'; // flex
+
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
       <NotificationProvider>
-      <PrimeReactProvider>
-        <Provider store={store}>
+      <Provider store={store}>
+        <PrimeReactProvider >
           <RouterProvider router={SystemRoutes} />
-        </Provider>
         </PrimeReactProvider>
+        </Provider>
       </NotificationProvider>
   </React.StrictMode>
 );

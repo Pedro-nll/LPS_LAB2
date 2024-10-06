@@ -74,7 +74,10 @@ export const CenterFlexContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
+    background-color: white;
+    padding: 25px 25px 25px 25px;
+    border-radius: 8px;
+    
     position: absolute;
     top: 50%;
     left: 50%;

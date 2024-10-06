@@ -27,7 +27,6 @@ import com.lps.back.repositories.AluguelRepository;
 import com.lps.back.repositories.AutomovelRepository;
 import com.lps.back.repositories.BancoRepository;
 import com.lps.back.repositories.ClienteRepository;
-import com.lps.back.repositories.EnderecoRepository;
 import com.lps.back.services.ClienteService;
 
 @Configuration
@@ -69,7 +68,7 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
 
         @Override
         public void run(String... args) throws Exception {
-                if (activeProfile.equals("test")) {
+                if (activeProfile.equals("dev")) {
                         Agencia agencia = new Agencia();
                         agencia.setName("Agencia 1");
                         agencia.setEmail("agencia1@example.com");
@@ -99,12 +98,11 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
 
                         cliente.setEndereco(end);
 
-
                         Emprego emp1 = new Emprego(null, "dev", "dti", 1200.00, cliente);
                         List<Emprego> empregos = new ArrayList<>();
                         empregos.add(emp1);
                         cliente.setEmpregos(empregos);
-                        clienteService.save(cliente);        
+                        clienteService.save(cliente);
 
                         // Create and save an 'Automovel' entity
                         Automovel automovel = new Automovel();
@@ -114,7 +112,8 @@ public class WebConfig implements WebMvcConfigurer, CommandLineRunner {
                         automovel.setModelo("Corolla");
                         automovel.setPlaca("XYZ1234");
                         automovel.setAlugado(false);
-                        automovel.setImageUrl("https://example.com/car.png");
+                        automovel.setImageUrl(
+                                        "https://cdn.motor1.com/images/mgl/ZJgy3/s1/2020-chevrolet-camaro-ss.webp");
                         automovel.setAgencia(agencia); // Set the associated 'Agencia'
                         automovelRepository.save(automovel);
 

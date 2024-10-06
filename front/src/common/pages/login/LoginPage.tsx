@@ -1,14 +1,14 @@
+import { Button } from 'primereact/button';
+import { InputText } from "primereact/inputtext";
+import { Password } from 'primereact/password';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { User, UserLogin } from '../../helpers/types.ts';
 import { login } from '../../redux/user/slice.js';
 import userService from '../../services/userService.ts';
 import Validade from '../../utils/Validate.tsx';
-import { Container, Space, Title, ErrorText } from './style.ts';
-import { Button } from 'primereact/button';
-import { InputText } from "primereact/inputtext";
-import { Password } from 'primereact/password';
+import { ErrorText, Space, Title } from './style.ts';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -66,27 +66,34 @@ const LoginPage = () => {
     };
 
     return (
-        <Container>
-            <Title>Login</Title>
-            <Space value={20}/>
-            <form onSubmit={onSubmit}>
-                <label htmlFor="email">Email</label>
-                <InputText id="email" className='full-width-input' value={emailInput} onChange={(e) => setEmailInput(e.target.value)} />
+        <>
+            <img src="/cars/loginLeft.png" alt="Left Background" style={{ position: "absolute", left: 0, top: 0, height: "100%", width: "50%", transform: "translateX(-20%)", zIndex: 0, objectFit: "contain" }} />
+            <img src="/cars/loginRight.png" alt="Right Background" style={{ position: "absolute", right: 0, top: 0, height: "100%", width: "50%", zIndex: 0, objectFit: "contain", }} />
+            <div className="flex justify-content-center" style={{ paddingTop: "20vh", position: "relative", }}>
+                <div className='flex flex-column h-40rem' style={{ backgroundColor: "white", padding: "10vh", borderRadius: "16px" }}>
+                    <Title>Login</Title>
+                    <Space value={20} />
+                    <form onSubmit={onSubmit}>
+                        <label htmlFor="email">Email</label>
+                        <InputText id="email" className='full-width-input' value={emailInput} onChange={(e) => setEmailInput(e.target.value)} />
 
-                <Space value={15}/>
+                        <Space value={15} />
 
-                <label htmlFor="senha">Senha</label>
-                <Password id="senha" className='full-width-input' value={passwordInput} onChange={(e) => setPasswordInput(e.target.value)} inputClassName='full-width-input' />
+                        <label htmlFor="senha">Senha</label>
+                        <Password id="senha" className='full-width-input' value={passwordInput} onChange={(e) => setPasswordInput(e.target.value)} inputClassName='full-width-input' />
 
-                <Space value={20}/>
+                        <Space value={20} />
 
-                {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+                        {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
 
-                <Button type="submit" label="Login" className='full-width-input' />
-                <Space value={5}/>
-                <Button type="button" label="Cadastro" className='full-width-input' text onClick={() => navigate('/registration')}/>
-            </form>
-        </Container>
+                        <Button type="submit" label="Login" className='full-width-input' />
+                        <Space value={5} />
+                        <Button type="button" label="Cadastro" className='full-width-input' text onClick={() => navigate('/registration')} />
+                    </form>
+                </div>
+            </div>
+        </>
+
     );
 };
 

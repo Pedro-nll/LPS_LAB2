@@ -18,7 +18,7 @@ import {
     Typography,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
-import api from './Api';
+import api from '../../services/api';
 
 const HomeAgencia = () => {
     const HOST = "http://localhost:8080"

@@ -1,68 +1,42 @@
 import { Button } from 'primereact/button';
-import { AluguelDTO, Automovel, UserSlice } from '../../helpers/types';
-import { Card, Colum, Image } from './style';
-import { Dialog } from 'primereact/dialog';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import api from '../../components/HomeAgencia/Api';
+import { Automovel } from '../../helpers/types';
 
-import { InputNumber } from 'primereact/inputnumber';
-        
+import { Tag } from 'primereact/tag';
 
-const AutomovelCard: React.FC<Automovel> = (automovel) => {
+const AutomovelCard = (automovel: Automovel) => {
+  const getSeverity = () => {
+    switch (automovel.alugado) {
+      case false:
+        return 'success';
 
-  const [open, setOpen] = useState(false);
-  const[value, setValue] = useState(0);
-  //const {user} = useSelector<UserSlice>(state => state.userReducer)
+      case true:
+        return 'warning';
 
-  let user;
-  api.get('/client').then(resp => user = resp.data)
-  console.log(5, user)
 
-  const openModalFunc = () => {
-    setOpen(true);
-  }
-
-  const alugar = (value) => {
-    let aluguel: AluguelDTO = {};
-
-    aluguel.valorMensal = value;
-    //aluguel.clienteId = user.id
-    
-  }
-
+      default:
+        return null;
+    }
+  };
   return (
-    <>
-    <Card>
-      <Colum>
-        {automovel.imageUrl ? <Image src={automovel.imageUrl} alt="Automóvel" /> : ""}
-      </Colum>
-
-      <Colum>
-        <p>Ano: {automovel.ano}</p>
-      </Colum>
-
-      <Colum>
-        <p>Marca: {automovel.marca}</p>
-      </Colum>
-
-      <Colum>
-        <p>Modelo: {automovel.modelo}</p>
-      </Colum>
-
-      <Colum>
-        <Button label="Alugar" onClick={openModalFunc}></Button>
-      </Colum>
-    </Card>
-
-    <Dialog header="Header" visible={open} style={{ width: '50vw' }} onHide={() => {if (!open) return; setOpen(false); }}>
-      <InputNumber value={value} onValueChange={(e) => setValue(e.value || 0)} />
-      <Button label='Confirmar' onClick={() => {alugar(value)}} />
-    </Dialog>
-
-    </>
-
+    <div className="col-12 sm:col-6 lg:col-12 xl:col-4 p-2 h" key={automovel.matricula}>
+      <div className="p-4 border-1 surface-border surface-card border-round">
+        <div className="flex flex-wrap align-items-center justify-content-between gap-2">
+          <div className="flex align-items-center gap-2">
+          </div>
+          <Tag value={automovel.alugado ? "Indisponivel" : "Disponivel"} style={{ padding: "4px" }} severity={getSeverity()} />
+        </div>
+        <div className="flex flex-column align-items-center gap-3 py-5">
+          <img className="w-9 shadow-2 border-round" src={`${automovel.imageUrl}`} alt={automovel.modelo} />
+          <div className="text-2xl font-bold">{automovel.modelo} - {automovel.ano}</div>
+        </div>
+        <div className="flex align-items-center justify-content-between">
+          <span className="text-2xl font-semibold">${automovel.ano}</span>
+          <Button icon="pi pi-shopping-cart" className="p-button-rounded" disabled={automovel.alugado === true}></Button>
+        </div>
+      </div>
+    </div >
   );
+
 };
 
 export default AutomovelCard;

@@ -1,5 +1,4 @@
 import {
-    Button,
     Checkbox,
     Container,
     Dialog,
@@ -19,12 +18,19 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
+import { Button } from 'primereact/button';
+
+import { TabView, TabPanel } from 'primereact/tabview';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import { Automovel } from '../../helpers/types';
 
 const HomeAgencia = () => {
     const HOST = "http://localhost:8080"
     const [vehicles, setVehicles] = useState([]);
     const [open, setOpen] = useState(false);
     const [AgenciaId, setAgenciaId] = useState()
+    const [activeIndex, setActiveIndex] = useState(0);
     const [currentVehicle, setCurrentVehicle] = useState({
         matricula: '',
         ano: 0,
@@ -40,6 +46,9 @@ const HomeAgencia = () => {
 
     useEffect(() => {
         getAgencia()
+
+        
+
     }, []);
     useEffect(() => {
         fetchVehicles()
@@ -119,11 +128,158 @@ const HomeAgencia = () => {
         }
     };
 
+    const imageBodyTemplate = (automovel : Automovel) => {
+        return <img src={automovel.imageUrl || ''} alt={automovel.modelo || ''} className="w-6rem shadow-2 border-round" />;
+    };
+
     return (
         <Container>
             <Typography variant="h4" gutterBottom>
                 Vehicle Management
             </Typography>
+
+            <div className="flex mb-2 gap-2 justify-content-end">
+                <Button onClick={() => setActiveIndex(0)} className='w10' label="Automoveis" />
+                <Button onClick={() => setActiveIndex(1)} className='w10' label="Aluguel" />
+            </div>
+            <TabView activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)}>
+                <TabPanel>
+                <Button variant="contained" color="primary" onClick={handleOpen}>
+                Add New Vehicle
+            </Button>
+            <TableContainer component={Paper}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Matricula</TableCell>
+                            <TableCell>Ano</TableCell>
+                            <TableCell>Marca</TableCell>
+                            <TableCell>Modelo</TableCell>
+                            <TableCell>Placa</TableCell>
+                            <TableCell>Alugado</TableCell>
+                            <TableCell>Actions</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {loading ? (
+                            <TableRow>
+                                <TableCell colSpan={7}>Loading...</TableCell>
+                            </TableRow>
+                        ) : Array.isArray(vehicles) && vehicles.length > 0 ? (
+                            vehicles.map((vehicle) => (
+                                <TableRow key={vehicle.matricula}>
+                                    <TableCell>{vehicle.matricula}</TableCell>
+                                    <TableCell>{vehicle.ano}</TableCell>
+                                    <TableCell>{vehicle.marca}</TableCell>
+                                    <TableCell>{vehicle.modelo}</TableCell>
+                                    <TableCell>{vehicle.placa}</TableCell>
+                                    <TableCell>{vehicle.alugado ? 'Yes' : 'No'}</TableCell>
+                                    <TableCell>
+                                        <Button onClick={() => handleEdit(vehicle)}>Edit</Button>
+                                        <Button onClick={() => handleDelete(vehicle.matricula)}>Delete</Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))
+                        ) : (
+                            <TableRow>
+                                <TableCell colSpan={7}>No vehicles found</TableCell>
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>{isEditing ? 'Edit Vehicle' : 'Add New Vehicle'}</DialogTitle>
+                <DialogContent>
+                    <TextField
+                        name="matricula"
+                        label="Matricula"
+                        fullWidth
+                        value={currentVehicle.matricula}
+                        onChange={handleInputChange}
+                        margin="normal"
+                    />
+                    <TextField
+                        name="ano"
+                        label="Ano"
+                        fullWidth
+                        type="number"
+                        value={currentVehicle.ano}
+                        onChange={handleInputChange}
+                        margin="normal"
+                    />
+                    <TextField
+                        name="marca"
+                        label="Marca"
+                        fullWidth
+                        value={currentVehicle.marca}
+                        onChange={handleInputChange}
+                        margin="normal"
+                    />
+                    <TextField
+                        name="modelo"
+                        label="Modelo"
+                        fullWidth
+                        value={currentVehicle.modelo}
+                        onChange={handleInputChange}
+                        margin="normal"
+                    />
+                    <TextField
+                        name="placa"
+                        label="Placa"
+                        fullWidth
+                        value={currentVehicle.placa}
+                        onChange={handleInputChange}
+                        margin="normal"
+                    />
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                name="alugado"
+                                checked={currentVehicle.alugado}
+                                onChange={handleInputChange}
+                            />
+                        }
+                        label="Alugado"
+                    />
+                    <TextField
+                        name="imageUrl"
+                        label="Image URL"
+                        fullWidth
+                        value={currentVehicle.imageUrl}
+                        onChange={handleInputChange}
+                        margin="normal"
+                    />
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleSubmit} color="primary">
+                        {isEditing ? 'Update' : 'Save'}
+                    </Button>
+                </DialogActions>
+            </Dialog>
+                </TabPanel>
+
+                <TabPanel>
+                    <DataTable value={products} tableStyle={{ minWidth: '50rem' }}>
+                        <Column field="code" header="Code"></Column>
+                        <Column field="name" header="Name"></Column>
+                        <Column field="category" header="Category"></Column>
+                        <Column field="quantity" header="Quantity"></Column>
+                    </DataTable>
+
+                </TabPanel>
+            </TabView>
+
+        </Container>
+    );
+};
+
+export default HomeAgencia;
+
+/*
             <Button variant="contained" color="primary" onClick={handleOpen}>
                 Add New Vehicle
             </Button>
@@ -240,8 +396,4 @@ const HomeAgencia = () => {
                     </Button>
                 </DialogActions>
             </Dialog>
-        </Container>
-    );
-};
-
-export default HomeAgencia;
+*/

@@ -40,18 +40,6 @@ export type Endereco = {
     cep: string;
 };
 
-export type Automovel = {
-    matricula?: string;
-    ano?: number;
-    marca?: string;
-    modelo?: string;
-    placa?: string;
-    alugado?: boolean;
-    imageUrl?: string;
-    agencia?: any;
-    // aluguel?: Aluguel[];
-  };
-
 
   export type AluguelDTO = {
     id?: number;
@@ -86,4 +74,36 @@ export type Rent = {
     agenciaId: number;
     banco: number;
     clienteId: number;
+};
+
+export type Aluguel = {
+  id?: number | null;
+  valorMensal?: number | null;
+  valorPendente?: number | null;
+  atrasado?: boolean | null;
+  ativo?: boolean | null;
+  taxaJuros?: number | null;
+  situacao?: string | null;
+  banco?: number | null;
+  clienteId?: number | null;
+  agenciaIdentifier?: number | null;
+  automovelMatricula?: string | null;
+};
+
+export type Agencia = {
+  id?: number | null;
+  name?: string | null;
+  email?: string | null;
+};
+
+export type Automovel = {
+  matricula?: string | null;
+  ano?: number | null;
+  marca?: string | null;
+  modelo?: string | null;
+  placa?: string | null;
+  alugado?: boolean | null;
+  imageUrl?: string | null;
+  agencia?: Agencia | null;
+  aluguel?: Aluguel[] | null;
 };

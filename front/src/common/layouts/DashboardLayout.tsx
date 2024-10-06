@@ -15,7 +15,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
     return (
         <div style={{ minHeight: '100svh', display: 'flex', flexDirection: 'column' }}>
             <PrimarySearchAppBar openSideBar={openNavBar} setOpenSideBar={setOpenNavBar} />
-            <div style={{ display: "flex", backgroundColor: '#f3f4f6', flexGrow: 1 }}>
+            <div style={{ display: "flex", flexGrow: 1 }}>
 
                 <main style={{ width: '100%', margin: '16px' }}>{children}</main>
             </div>

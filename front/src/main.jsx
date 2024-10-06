@@ -4,28 +4,25 @@ import React from "react";
 import { Provider } from "react-redux";
 import { NotificationProvider } from "./common/context/NotificationContext.tsx";
 import store from "./common/redux/store.js";
-import "./styles/global.css";
 
 import { RouterProvider } from "react-router-dom";
 import SystemRoutes from "./common/routes/Routes.tsx";
 
+import { PrimeReactProvider } from "primereact/api";
 
-import { PrimeReactProvider } from 'primereact/api';
-        
-        
-import 'primereact/resources/themes/lara-light-indigo/theme.css'; //theme
-import 'primereact/resources/primereact.min.css'; //core css
-import 'primeicons/primeicons.css'; //icons
-import 'primeflex/primeflex.css'; // flex
-
+import "primeflex/primeflex.css"; // flex
+import "primeicons/primeicons.css"; //icons
+import "primereact/resources/primereact.css"; //core css
+import "primereact/resources/themes/mdc-dark-indigo/theme.css"; //theme
+import "./styles/global.css";
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-      <NotificationProvider>
+    <NotificationProvider>
       <Provider store={store}>
-        <PrimeReactProvider >
+        <PrimeReactProvider>
           <RouterProvider router={SystemRoutes} />
         </PrimeReactProvider>
-        </Provider>
-      </NotificationProvider>
+      </Provider>
+    </NotificationProvider>
   </React.StrictMode>
 );

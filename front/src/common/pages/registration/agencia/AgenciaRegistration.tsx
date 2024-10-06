@@ -40,11 +40,10 @@ const AgenciRegistration = () => {
 
             <div className="flex justify-content-center" style={{ paddingTop: "20vh", position: "relative", }}>
 
-                <div className='flex flex-column h-40rem' style={{ backgroundColor: "white", padding: "10vh", borderRadius: "16px", border: "1px solid " }}>
+                <div className='flex flex-column h-40rem' style={{ backdropFilter: "blur(35px)", padding: "10vh", borderRadius: "16px", border:"2px solid" }}>
                     <Title>Cadastro de Agência</Title>
                     <Space value={20} />
 
-                    <div>
                         <label htmlFor="nome">Nome</label>
                         <InputText id="nome" className='full-width-input' aria-errormessage={'ola'} value={nameIntput} onChange={(e) => setNameIntput(e.target.value)} />
                         <Space value={15} />
@@ -62,7 +61,6 @@ const AgenciRegistration = () => {
                             pt={{ iconField: { root: { className: 'w-full' } } }}
                             value={confirmPasswordIntput} onChange={(e) => setconfirmPasswordIntput(e.target.value)} toggleMask />
                         <Space value={15} />
-                    </div>
 
                     <Space value={20} />
                     <Button label="Cadastrar" className='full-width-input' onClick={register} />

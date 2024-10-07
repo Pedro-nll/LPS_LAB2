@@ -107,3 +107,14 @@ export type Automovel = {
   agencia?: Agencia | null;
   aluguel?: Aluguel[] | null;
 };
+
+export type AluguelInfo = {
+  id?: number,
+  imageUrl: string;
+  matricula: string;
+  ano: number;
+  marca: string;
+  modelo: string;
+  placa: string;
+  valorMensal: number;
+};

@@ -23,11 +23,12 @@ import { Button } from 'primereact/button';
 import { TabView, TabPanel } from 'primereact/tabview';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { Automovel } from '../../helpers/types';
+import { Automovel, AluguelInfo } from '../../helpers/types';
+import axios from 'axios';
 
 const HomeAgencia = () => {
     const HOST = "http://localhost:8080"
-    const [vehicles, setVehicles] = useState([]);
+    const [vehicles, setVehicles] = useState<Automovel[]>([]);
     const [open, setOpen] = useState(false);
     const [AgenciaId, setAgenciaId] = useState()
     const [activeIndex, setActiveIndex] = useState(0);
@@ -43,6 +44,8 @@ const HomeAgencia = () => {
     });
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(true);
+    
+    console.log("Veiculos", vehicles)
 
     useEffect(() => {
         getAgencia()
@@ -128,9 +131,61 @@ const HomeAgencia = () => {
         }
     };
 
-    const imageBodyTemplate = (automovel : Automovel) => {
+    const imageBodyTemplate = (automovel : AluguelInfo) => {
         return <img src={automovel.imageUrl || ''} alt={automovel.modelo || ''} className="w-6rem shadow-2 border-round" />;
     };
+
+    const aceitar = (id: number) => {
+        api.post(`${HOST}/aluguel/acceptAluguel/${id}`)
+        getAgencia();
+    }
+    
+    const recusar = (id: number) => {
+        api.post(`${HOST}/aluguel/recAluguel/${id}`)
+        getAgencia();
+    }
+
+    console.log(vehicles)
+
+    const test = (vehicle : AluguelInfo) => {
+        console.log('test')
+        console.log(vehicle)
+
+        return (
+            <div>
+                <Button label='Aceitar' onClick={() => aceitar(vehicle.id || 0)}/>
+                <Button label='Recusar' onClick={() => recusar(vehicle.id || 0)}/>
+            </div>
+        )
+    }
+
+    const alugueis: AluguelInfo[] = vehicles
+        .map((vehicle): AluguelInfo | null => {
+            if (!vehicle || !vehicle.aluguel || vehicle.aluguel.length === 0) {
+            return null;
+            }
+
+            const maiorAluguel = vehicle.aluguel.reduce(
+            (prev, curr) => (curr?.id && prev?.id && curr.id > prev.id ? curr : prev),
+            vehicle.aluguel[0]
+            );
+
+            if (maiorAluguel?.situacao === "APROVADOPELOBANCO" && maiorAluguel?.valorMensal !== null) {
+            return {
+                id: maiorAluguel.id || 0,
+                imageUrl: vehicle.imageUrl ?? "",
+                matricula: vehicle.matricula ?? "",
+                ano: vehicle.ano ?? 0,
+                marca: vehicle.marca ?? "",
+                modelo: vehicle.modelo ?? "",
+                placa: vehicle.placa ?? "",
+                valorMensal: maiorAluguel.valorMensal || 0
+            };
+            }
+
+            return null;
+        })
+        .filter((aluguel): aluguel is AluguelInfo => aluguel !== null);
 
     return (
         <Container>
@@ -263,11 +318,14 @@ const HomeAgencia = () => {
                 </TabPanel>
 
                 <TabPanel>
-                    <DataTable value={products} tableStyle={{ minWidth: '50rem' }}>
-                        <Column field="code" header="Code"></Column>
-                        <Column field="name" header="Name"></Column>
-                        <Column field="category" header="Category"></Column>
-                        <Column field="quantity" header="Quantity"></Column>
+                    <DataTable value={alugueis} tableStyle={{ minWidth: '50rem' }}>
+                        <Column body={imageBodyTemplate} header="imagem"></Column>
+                        <Column field="matricula" header="matricula"></Column>
+                        <Column field="ano" header="ano"></Column>
+                        <Column field="marca" header="marca"></Column>
+                        <Column field="modelo" header="modelo"></Column>
+                        <Column field="valorMensal" header="Valor"></Column>
+                        <Column body={test} header="actions"></Column>
                     </DataTable>
 
                 </TabPanel>

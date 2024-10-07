@@ -74,7 +74,7 @@ const HomePage = () => {
   };
 
   const listTemplate = (data: Automovel[]) => {
-    return <div className="grid grid-nogutter" style={{ height: "100vh" }}>{data.map((automovel: Automovel) => itemTemplate(automovel))}</div>;
+    return <div className="grid grid-nogutter" style={{ minHeight: "100vh" }}>{data.map((automovel: Automovel) => itemTemplate(automovel))}</div>;
   };
 
   return (

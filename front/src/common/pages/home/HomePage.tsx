@@ -83,7 +83,7 @@ const HomePage = () => {
 
         <SelectButton value={view} onChange={(e) => handleViewChange(e.value)} options={["Disponiveis", "Alugados"]} />
       </header>
-      <DataView value={data} listTemplate={listTemplate} layout="grid" style={{ height: "100vh" }} />
+      <DataView value={data} listTemplate={listTemplate} layout="grid" style={{ minHeight: "100vh" }} />
 
       <RentCarModal open={openModal} onClose={change} automovel={rentCar} setAutomovel={setRentCar} />
     </>
